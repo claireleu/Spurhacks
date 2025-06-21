@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Jersey+15&family=Noto+Sans+TC:wght@100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+    /* brown1 - rgba(175, 83, 29, 1) */
+    --color-fiery-orange-50: #fdf9ed;
+    --color-fiery-orange-100: #f8edcd;
+    --color-fiery-orange-200: #f1d996;
+    --color-fiery-orange-300: #eac05f;
+    --color-fiery-orange-400: #e5aa3a;
+    --color-fiery-orange-500: #dd8c23;
+    --color-fiery-orange-600: #c36a1c;
+    --color-fiery-orange-700: #af531d;
+    --color-fiery-orange-800: #843c1c;
+    --color-fiery-orange-900: #6d331a;
+    --color-fiery-orange-950: #3e190a;
+
+    /* brown2 - rgba(211, 102, 39, 1) */
+    --color-piper-50: #fdf7ef;
+    --color-piper-100: #faedda;
+    --color-piper-200: #f4d8b4;
+    --color-piper-300: #edbd84;
+    --color-piper-400: #e49753;
+    --color-piper-500: #de7c31;
+    --color-piper-600: #d36627;
+    --color-piper-700: #ac4d22;
+    --color-piper-800: #8a3e22;
+    --color-piper-900: #6f351f;
+    --color-piper-950: #3c190e;
+
+    /* brown3 - */
+    --color-crusta-50: #fff5ed;
+    --color-crusta-100: #ffe8d4;
+    --color-crusta-200: #ffcda8;
+    --color-crusta-300: #ffaa71;
+    --color-crusta-400: #ff8243;
+    --color-crusta-500: #fe5711;
+    --color-crusta-600: #ef3c07;
+    --color-crusta-700: #c62908;
+    --color-crusta-800: #9d230f;
+    --color-crusta-900: #7e1f10;
+    --color-crusta-950: #440c06;    
+
+    /* #d29d83 */
+    --color-burning-sand-50: #fbf7f5;
+    --color-burning-sand-100: #f7eee9;
+    --color-burning-sand-200: #f1e0d7;
+    --color-burning-sand-300: #e7c9ba;
+    --color-burning-sand-400: #d29d83;
+    --color-burning-sand-500: #c68a6d;
+    --color-burning-sand-600: #b07152;
+    --color-burning-sand-700: #935d42;
+    --color-burning-sand-800: #7b4f39;
+    --color-burning-sand-900: #674535;
+    --color-burning-sand-950: #372218;
+}

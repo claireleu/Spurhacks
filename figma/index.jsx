@@ -6,7 +6,6 @@ import duoslangoLogo1 from "./duoslango-logo-1.png";
 export const LaunchPage = () => {
   const handleSelectClick = () => {
     console.log("SELECT button clicked!");
-    
   };
 
   return (
