@@ -7,6 +7,7 @@ import {
 import './root.css';
 import Home from './Home.jsx';
 import FillTheBlank from './FillTheBlank.jsx';
+import SentenceSelect from './SentenceSelect.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/fill-the-blank",
     element: <FillTheBlank />
+  },
+  {
+    path: "/sentence-select",
+    element: <SentenceSelect />
   },
 ]);
 

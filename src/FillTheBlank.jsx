@@ -1,23 +1,29 @@
 import amongus from "./assets/amongus.png";
 import { Word } from "./components.jsx";
-import React, { useState } from 'react';
-
-function Counter() {
-    const [count, setCount] = useState(0);
-  
-    return (
-      <div>
-        <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>Click me</button>
-      </div>
-    );
-  }
+import React, { useState } from "react";
 
 function FillTheBlank() {
+    
+    const correctAnswer = "sigma";
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
+    const [showFeedback, setShowFeedback] = useState(false);
 
-    const handleClickOption = () => {
-        console.log("Option clicked");
+    const handleWordClick = (word) => {
+        console.log("Selected word:", word);
+        setSelectedAnswer(word);
+        setShowFeedback(false); // Reset feedback when new answer is selected
     };
+
+    const handleCheck = () => {
+        console.log("Check clicked, selectedAnswer:", selectedAnswer);
+        if (selectedAnswer) {
+            setShowFeedback(true);
+            console.log("Feedback shown, isCorrect:", selectedAnswer === correctAnswer);
+        }
+    };
+
+    const isCorrect = selectedAnswer === correctAnswer;
+    console.log("Current state - selectedAnswer:", selectedAnswer, "isCorrect:", isCorrect, "showFeedback:", showFeedback);
 
     return (
         <div className="bg-[var(--color-grey)] min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
@@ -25,7 +31,7 @@ function FillTheBlank() {
                 <div className="w-full flex justify-between items-center px-4 py-2">
                     <button
                         onClick={() => window.location.href = '/'}
-                        className="[font-family:'Jersey_10-Regular',Helvetica] font-normal text-gray-400 text-5xl cursor-pointer"
+                        className="[font-Jersey-15 font-normal text-gray-400 text-5xl cursor-pointer"
                     >
                         X
                     </button>
@@ -43,7 +49,7 @@ function FillTheBlank() {
                             Erm what the
                         </div>
                         <div className="font-Jersey-15 font-normal text-[#3c3c3c] text-4xl sm:text-5xl md:text-6xl tracking-wide">
-                            ________
+                            {showFeedback && isCorrect ? correctAnswer : "________"}
                         </div>
                         <div className="font-Jersey-15 font-normal text-[#3c3c3c] text-4xl sm:text-5xl md:text-6xl">
                             .
@@ -53,33 +59,47 @@ function FillTheBlank() {
 
                 {/* Word Bank */}
                 <div className="flex flex-wrap items-center justify-center gap-4 my-8">
+                    {["sigma", "sus", "skibidi", "toilet"].map((word, index) => (
                     <Word
-                        divClassName="text-2xl md:text-3xl font-Jersey-15"
-                        text="sigma"
+                        key={index}
+                        divClassName={`text-2xl md:text-3xl font-Jersey-15 transition-all duration-200 ${
+                        selectedAnswer === word 
+                            ? "bg-gray-600 text-white shadow-lg transform scale-105" 
+                            : "bg-white hover:bg-gray-100"
+                        }`}
+                        text={word}
+                        onClick={() => handleWordClick(word)} 
                     />
-                    <Word
-                        divClassName="text-2xl md:text-3xl font-Jersey-15"
-                        text="sus"
-                    />
-                    <Word
-                        divClassName="text-2xl md:text-3xl font-Jersey-15"
-                        text="skibidi"
-                    />
-                    <Word
-                        divClassName="text-2xl md:text-3xl font-Jersey-15"
-                        text="toilet"
-                    />
+                    ))}
                 </div>
 
                 {/* Check Button */}
                 <div className="w-full flex justify-end px-4 py-2">
-                    <button
-                        className="w-full max-w-xs rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer text-center p-4 font-Jersey-15 font-normal text-gray-500 text-3xl md:text-4xl"
-                        onClick={() => window.location.href = 'https://placeholder-link.com'}
-                    >
-                        CHECK
-                    </button>
+                <button
+                    className={`w-full max-w-xs rounded-full cursor-pointer text-center p-4 font-Jersey-15 font-normal text-3xl md:text-4xl transition-all duration-200 ${
+                        selectedAnswer 
+                            ? "bg-blue-500 hover:bg-blue-600 text-white" 
+                            : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    }`}
+                    onClick={handleCheck}
+                    disabled={!selectedAnswer}
+                >
+                    CHECK
+                </button>
                 </div>
+
+                {/* Feedback */}
+                {showFeedback && selectedAnswer && (
+                    <div className="w-full flex justify-center px-4 py-2 mb-8">
+                        <div className={`text-3xl font-Jersey-15 font-bold px-8 py-4 rounded-lg shadow-lg ${
+                            isCorrect 
+                                ? "bg-green-500 text-white border-4 border-green-600" 
+                                : "bg-red-500 text-white border-4 border-red-600"
+                        }`}>
+                            {isCorrect ? "✓ CORRECT! Well done!" : "✗ INCORRECT! Try again!"}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
