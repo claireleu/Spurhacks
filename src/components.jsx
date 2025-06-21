@@ -1,6 +1,11 @@
-export function Word({ className, divClassName, state, text }) {
+export function Word({ className, divClassName, state, text, onClick, disabled }) {
   return (
-    <div className={`${className} ${divClassName} ${state} bg-white rounded-lg px-4 py-2 shadow-md cursor-pointer`}>
+    <div
+      onClick={!disabled ? onClick : undefined}
+      className={`${className} ${divClassName} ${state} rounded-lg px-4 py-2 shadow-md ${
+        disabled ? "cursor-not-allowed" : "cursor-pointer"
+      }`}
+    >
       {text}
     </div>
   );
