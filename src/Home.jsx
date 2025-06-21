@@ -1,7 +1,6 @@
 import logo from "./assets/duoslango-logo.png";
 import bird from "./assets/duoslango.png";
 import background from "./assets/background.png";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const HomeButton = ({ label, icon }) => (
   <button className={
