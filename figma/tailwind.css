@@ -1,0 +1,14 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --collection-1-brown1: rgba(175, 83, 29, 1);
+  --collection-1-brown2: rgba(211, 102, 39, 1);
+  --collection-1-orange: rgba(255, 130, 67, 1);
+}
