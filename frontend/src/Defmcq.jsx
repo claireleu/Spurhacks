@@ -5,16 +5,16 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [brainrotData, setBrainrotData] = useState(null)
+  const [questionData, setQuestionData] = useState(null)
 
-  const getBrainrot = async () => {
+  const getDefmcq = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/generate-fill-in-blank')
+      const response = await fetch('http://127.0.0.1:5000/generate-definition-mc')
       const data = await response.json()
-      setBrainrotData(data) /*added .text before by app.py is already only returning .text*/
+      setQuestionData(data) /*added .text before by app.py is already only returning .text*/
       console.log('Got response:', data)
     } catch (err) {
-      console.error('Failed to fetch brainrot', err)
+      console.error('Failed to fetch question', err)
     }
   }
 
@@ -29,13 +29,13 @@ function App() {
         </a>
       </div>
 
-      <h1>Brainrot Generator</h1>
+      <h1>Translate mc Q Generator</h1>
 
-      {brainrotData && (
+      {questionData && (
         <div className="card">
-          <p>{brainrotData.sentence}</p>
+          <p>{questionData.word}</p>
           <div>
-            {brainrotData.choices.map((choice, index) => (
+            {questionData.choices.map((choice, index) => (
               <button key={index} style={{ margin: '0.5rem' }}>{choice}</button>
             ))}
           </div>
@@ -45,8 +45,8 @@ function App() {
       <div className="card">
         <button onClick={() => {
           setCount((count) => count + 1)
-          getBrainrot()}}>
-          brainrot counter: {count}
+          getDefmcq()}}>
+          mc question counter: {count}
         </button>
 
       </div>
