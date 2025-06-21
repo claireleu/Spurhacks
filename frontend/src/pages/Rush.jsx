@@ -1,10 +1,11 @@
 import { BackgroundContainer } from "./components"
 import { useState } from "react";
+import FillTheBlank from "./questions/FillTheBlank"
 
 function Rush() {
     const temp = {
         sentence: 'After a long day of classes and extracurriculars, I just want to go home and become completely _____ in my bed.',
-        choices: ['rizz', 'ate', 'cooked', 'delulu', 'goblinmode'], 
+        choices: ['rizz', 'ate', 'cooked', 'delulu', 'goblinmode'],
         answer: 'goblinmode'
     }
 
@@ -12,12 +13,9 @@ function Rush() {
     const [question, setQuestion] = useState(temp);
 
     return (
-        <BackgroundContainer>
-            <div className="flex flex-col items-center justify-center">
-                <div className="bg-white">hello</div>
-                
-            </div>
-        </BackgroundContainer>
+        <div className="flex flex-col items-center justify-center">
+            <FillTheBlank />
+        </div>
     )
 }
 
