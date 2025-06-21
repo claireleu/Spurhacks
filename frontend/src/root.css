@@ -107,6 +107,31 @@
     --color-cape-palliser-900: #5e3129;
     --color-cape-palliser-950: #341814;
 
+    /* Game Over Colors */
+    --color-muddy-waters-50: #f8f5ee;
+    --color-muddy-waters-100: #ede6d4;
+    --color-muddy-waters-200: #ddccab;
+    --color-muddy-waters-300: #c9ab7b;
+    --color-muddy-waters-400: #b99159;
+    --color-muddy-waters-500: #a97d49;
+    --color-muddy-waters-600: #91643d;
+    --color-muddy-waters-700: #754c33;
+    --color-muddy-waters-800: #634030;
+    --color-muddy-waters-900: #56372d;
+    --color-muddy-waters-950: #311c17;
+
+    --color-cape-palliser-50: #faf6f0;
+    --color-cape-palliser-100: #f0e5d5;
+    --color-cape-palliser-200: #e0c9a7;
+    --color-cape-palliser-300: #d0aa79;
+    --color-cape-palliser-400: #c5915a;
+    --color-cape-palliser-500: #ba7746;
+    --color-cape-palliser-600: #b0643f;
+    --color-cape-palliser-700: #894734;
+    --color-cape-palliser-800: #713a2f;
+    --color-cape-palliser-900: #5e3129;
+    --color-cape-palliser-950: #341814;
+
     /* Fonts */
     --font-Jersey-15: "Jersey 15", Helvetica;
 }

@@ -8,6 +8,7 @@ import './root.css';
 import Home from './pages/Home';
 import FillTheBlank from './FillTheBlank';
 import Rush from './pages/Rush'
+import GameOver from './pages/GameOver'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,9 @@ const router = createBrowserRouter([
   }, {
     path: "/rush",
     element: <Rush />
+  }, {
+    path: "/gameover",
+    element: <GameOver />
   }
 
 ]);

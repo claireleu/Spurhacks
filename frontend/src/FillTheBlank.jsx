@@ -3,10 +3,6 @@ import { Word } from "./components.jsx";
 
 function FillTheBlank() {
 
-    const handleClickOption = () => {
-        console.log("Option clicked");
-    };
-
     return (
         <div className="bg-[var(--color-grey)] min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
             <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-between h-full">
