@@ -1,10 +1,14 @@
 import React from "react";
-import { Icon } from "./Icon";
-import duoslango11 from "./duoslango-1-1.png";
+import { BuildingBlocks } from "./BuildingBlocks";
+import duoslango12 from "./duoslango-1-2.png";
 import duoslangoLogo1 from "./duoslango-logo-1.png";
-import group1 from "./group-1.png";
 
 export const LaunchPage = () => {
+  const handleSelectClick = () => {
+    console.log("SELECT button clicked!");
+    
+  };
+
   return (
     <div className="bg-[#d29d83] flex flex-row justify-center w-full">
       <div className="bg-[#d29d83] w-[1440px] h-[1024px]">
@@ -17,10 +21,52 @@ export const LaunchPage = () => {
             />
 
             <img
-              className="absolute w-[439px] h-[356px] top-[139px] left-[784px] object-cover"
+              className="absolute w-[439px] h-[356px] top-[139px] left-[779px] object-cover"
               alt="Duoslango"
-              src={duoslango11}
+              src={duoslango12}
             />
+          </div>
+
+          <div
+            className="absolute w-[323px] h-[100px] top-[597px] left-[345px] cursor-pointer"
+            onClick={handleSelectClick}
+          >
+            <div className="absolute w-[323px] h-[100px] top-0 left-0">
+              <div className="relative w-[337px] h-[116px] -top-2 -left-2 rounded-[50px] border-8 border-solid border-white shadow-[0px_4px_4px_#916955]">
+                <div className="absolute w-[228px] top-2.5 left-[27px] [font-family:'Jersey_15-Regular',Helvetica] font-normal text-white text-[80px] tracking-[0] leading-[normal]">
+                  SELECT
+                </div>
+              </div>
+            </div>
+
+            <BuildingBlocks
+              className="!h-[90px] !rounded-[50px] !absolute bg-[url(/image.svg)] !left-[214px] !w-[100px] !top-[5px]"
+              type="icon"
+            />
+          </div>
+
+          <div className="absolute w-[695px] h-[203px] top-[589px] left-[683px] bg-[#d29d83] rounded-[50px] border-8 border-solid border-white shadow-[0px_4px_4px_#916955]">
+            <div className="-top-px left-[50px] absolute w-[226px] [text-shadow:4px_6px_4px_#00000040] [font-family:'Jersey_15-Regular',Helvetica] font-normal text-white text-[80px] tracking-[0] leading-[normal] whitespace-nowrap">
+              MOD 1
+            </div>
+
+            <div className="-top-px left-[340px] absolute w-[226px] [text-shadow:4px_6px_4px_#00000040] [font-family:'Jersey_15-Regular',Helvetica] font-normal text-white text-[80px] tracking-[0] leading-[normal] whitespace-nowrap">
+              MOD 2
+            </div>
+
+            <div className="top-[79px] left-[50px] absolute w-[226px] [text-shadow:4px_6px_4px_#00000040] [font-family:'Jersey_15-Regular',Helvetica] font-normal text-white text-[80px] tracking-[0] leading-[normal] whitespace-nowrap">
+              MOD 3
+            </div>
+
+            <div className="top-[79px] left-[340px] absolute w-[226px] [text-shadow:4px_6px_4px_#00000040] [font-family:'Jersey_15-Regular',Helvetica] font-normal text-white text-[80px] tracking-[0] leading-[normal] whitespace-nowrap">
+              MOD 4
+            </div>
+          </div>
+
+          <div className="absolute w-[266px] h-[116px] top-[589px] left-[62px] rounded-[50px] border-8 border-solid border-white shadow-[0px_4px_4px_#916955]">
+            <div className="absolute -top-px left-9 [-webkit-text-stroke:1px_#ffffff] [font-family:'Jersey_15-Regular',Helvetica] font-normal text-white text-[80px] tracking-[0] leading-[normal] whitespace-nowrap">
+              START
+            </div>
           </div>
 
           <div className="absolute w-[1440px] h-[189px] top-[835px] left-0 bg-white">
@@ -28,30 +74,6 @@ export const LaunchPage = () => {
               “eh put a saying here”
             </p>
           </div>
-
-          <div className="absolute w-[321px] h-[100px] top-[607px] left-[345px]">
-            <div className="h-[100px]">
-              <div className="relative w-[323px] h-[100px]">
-                <div className="absolute w-[323px] h-[100px] top-0 left-0">
-                  <div className="relative w-[337px] h-[116px] -top-2 -left-2 rounded-[50px] border-8 border-solid border-white shadow-[0px_4px_4px_#916955]">
-                    <div className="absolute w-[228px] top-2.5 left-[27px] [font-family:'Jersey_15-Regular',Helvetica] font-normal text-white text-[80px] tracking-[0] leading-[normal]">
-                      SELECT
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute w-[100px] h-[90px] top-[5px] left-[214px] rounded-[50px] rotate-90">
-                  <Icon className="!absolute !w-[90px] !h-[100px] !top-[-5px] !left-[5px] !-rotate-90" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <img
-            className="absolute w-[274px] h-[124px] top-[599px] left-[58px]"
-            alt="Group"
-            src={group1}
-          />
         </div>
       </div>
     </div>
