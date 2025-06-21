@@ -78,7 +78,7 @@ const QuestionCheck = ({ showFeedback, handleCheck, selectedAnswer }) => {
     return (
         <>
             {!showFeedback && (
-                <div className="absolute bottom-0 w-full flex justify-end px-4 py-8 max-w-4xl mx-auto">
+                <div className="absolute bottom-0 w-full flex justify-center md:justify-end px-4 py-8 max-w-4xl mx-auto">
                     <button
                         className={`w-full max-w-xs rounded-full cursor-pointer text-center p-4 font-Jersey-15 font-normal text-3xl md:text-4xl transition-all duration-200 ${selectedAnswer
                             ? "bg-blue-500 hover:bg-blue-600 text-white"
@@ -96,7 +96,6 @@ const QuestionCheck = ({ showFeedback, handleCheck, selectedAnswer }) => {
 }
 
 const FeedbackBanner = ({ isCorrect, handleContinue }) => (
-    
     <div
         className={`fixed bottom-0 left-0 w-full p-6 text-white ${isCorrect ? "bg-[#d7ffb8]" : "bg-[#ffdfe0]"
             }`}
