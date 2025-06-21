@@ -8,6 +8,7 @@ import './root.css';
 import Home from './pages/Home';
 import FillTheBlank from './FillTheBlank';
 import Rush from './pages/Rush'
+import SentenceSelect from './SentenceSelect.jsx';
 import GameOver from './pages/GameOver'
 
 const router = createBrowserRouter([
@@ -20,6 +21,9 @@ const router = createBrowserRouter([
   }, {
     path: "/rush",
     element: <Rush />
+  }, {
+    path: "/sentence-select",
+    element: <SentenceSelect />
   }, {
     path: "/gameover",
     element: <GameOver />
