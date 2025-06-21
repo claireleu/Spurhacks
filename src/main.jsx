@@ -5,20 +5,22 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './root.css';
-import Home from './Home.jsx';
-import FillTheBlank from './FillTheBlank.jsx';
+import Home from './pages/Home';
+import FillTheBlank from './FillTheBlank';
+import Rush from './pages/Rush'
 import SentenceSelect from './SentenceSelect.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />
-  },
-  {
+  }, {
     path: "/fill-the-blank",
     element: <FillTheBlank />
-  },
-  {
+  }, {
+    path: "/rush",
+    element: <Rush />
+  }, {
     path: "/sentence-select",
     element: <SentenceSelect />
   },
