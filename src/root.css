@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Jersey+15&family=Noto+Sans+TC:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -53,4 +53,57 @@
     --color-burning-sand-800: #7b4f39;
     --color-burning-sand-900: #674535;
     --color-burning-sand-950: #372218;
+
+    /* Background Gradients */
+    --color-porsche-50: #fcf9f0;
+    --color-porsche-100: #f9f0db;
+    --color-porsche-200: #f1deb7;
+    --color-porsche-300: #e8c789;
+    --color-porsche-400: #dea657;
+    --color-porsche-500: #d78e38;
+    --color-porsche-600: #c9782d;
+    --color-porsche-700: #a75d27;
+    --color-porsche-800: #864b26;
+    --color-porsche-900: #6c3f22;
+    --color-porsche-950: #3a1f10;
+
+    --color-burnt-sienna-50: #fdf4ef;
+    --color-burnt-sienna-100: #fae6da;
+    --color-burnt-sienna-200: #f3cab5;
+    --color-burnt-sienna-300: #eba686;
+    --color-burnt-sienna-400: #e1744f;
+    --color-burnt-sienna-500: #db5734;
+    --color-burnt-sienna-600: #cd4129;
+    --color-burnt-sienna-700: #aa3124;
+    --color-burnt-sienna-800: #882924;
+    --color-burnt-sienna-900: #6e2520;
+    --color-burnt-sienna-950: #3b0f0f;
+
+    /* Button Background*/
+    --color-tumbleweed-50: #faf5f2;
+    --color-tumbleweed-100: #f4e8e0;
+    --color-tumbleweed-200: #e9cebf;
+    --color-tumbleweed-300: #d39e83;
+    --color-tumbleweed-400: #ca876d;
+    --color-tumbleweed-500: #bf6a50;
+    --color-tumbleweed-600: #b15745;
+    --color-tumbleweed-700: #94443a;
+    --color-tumbleweed-800: #773a35;
+    --color-tumbleweed-900: #61312d;
+    --color-tumbleweed-950: #341816;
+
+    --color-cape-palliser-50: #faf6f0;
+    --color-cape-palliser-100: #f0e5d5;
+    --color-cape-palliser-200: #e0c9a7;
+    --color-cape-palliser-300: #d0aa79;
+    --color-cape-palliser-400: #c5915a;
+    --color-cape-palliser-500: #ba7746;
+    --color-cape-palliser-600: #b0643f;
+    --color-cape-palliser-700: #894734;
+    --color-cape-palliser-800: #713a2f;
+    --color-cape-palliser-900: #5e3129;
+    --color-cape-palliser-950: #341814;
+
+    /* Fonts */
+    --font-Jersey-15: "Jersey 15", Helvetica;
 }

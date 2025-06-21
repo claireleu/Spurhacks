@@ -3,27 +3,43 @@ import bird from "./assets/duoslango.png";
 import background from "./assets/background.png";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
+const HomeButton = ({ label, icon }) => (
+  <button className={
+    `flex items-center justify-center rounded-full border-4 border-white text-white px-6 py-2 text-3xl font-stretch tracking-wider font-Jersey-15 
+    bg-gradient-to-b from-cape-palliser-400 to-tumbleweed-500 shadow-md mr-4 cursor-pointer 
+    hover:from-cape-palliser-400 hover:to-tumbleweed-600 hover:border-burning-sand-200 
+    hover:scale-105 transition-all duration-200`
+  }>
+    {label} {icon}
+  </button>
+);
+
 function Home() {
-
-  const handleSelectClick = () => {
-    console.log("SELECT button clicked!");
-  };
-
   return (
-    <div className="bg-[#d29d83] h-screen w-screen flex items-center justify-center">
-      <div className="flex flex-col h-2/3 w-auto">
-        <div className="bg-[url(background)] h-1/5">
-          <img
-            className="h-full w-auto"
-            alt="Duoslango logo"
-            src={logo}
-          />
-          <img
-            className="absolute w-1/3 object-cover"
-            alt="Duoslango"
-            src={bird}
-          />
-        </div>
+    <div className="min-h-screen w-full flex flex-col items-center justify-center select-none"
+      style={{ backgroundImage: `url(${background})` }}>
+      <div className="relative w-[90vw] max-w-[700px] h-fit rounded-3xl border-4 border-white bg-gradient-to-b from-porsche-500 to-burnt-sienna-400 flex items-center p-8 shadow-lg">
+        <img
+          src={logo}
+          alt="Duoslango logo"
+          className="h-[110px] object-contain z-10"
+        />
+        <img
+          src={bird}
+          alt="Duoslango"
+          className="absolute bottom-0 right-8 h-[140px] object-contain z-20"
+          style={{ pointerEvents: "none" }}
+        />
+      </div>
+      <div className="flex flex-row mt-8 mb-8 gap-2">
+        <HomeButton label={"Button"} />
+        <HomeButton label={"Button"} />
+        
+      </div>
+      <div className="py-3 px-5 rounded-2xl w-fit flex justify-center bg-amber-50">
+        <p className="italic text-[#d29d83] text-3xl font-mono text-center">
+          "eh put a saying here"
+        </p>
       </div>
     </div>
   );
