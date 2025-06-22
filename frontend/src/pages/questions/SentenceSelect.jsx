@@ -67,13 +67,19 @@ export const SentenceSelect = () => {
           </div>
         </div>
 
-        {/* Mirror Section (Bottom Bubble) */}
-        <div className="flex w-[686px] top-[127px] left-64 rotate-180 flex-col items-end absolute">
-          <div className="relative w-[686px] h-[169px]">
-            <div className="inline-flex h-[117px] items-center gap-2.5 px-[26px] py-3.5 absolute top-[61px] left-[122px] bg-white rounded-[15px] border-2 border-solid border-neutral-200">
-              <div className="relative w-[718px] h-[90px] mt-[-0.50px] mb-[-0.50px] border-b-2 [border-bottom-style:solid] border-[#afafaf] rotate-180" />
+        {/* User Input Section (Bottom Bubble) */}
+        <div className="absolute w-[942px] h-[169px] top-[296px] left-[249px]">
+          <div className="inline-flex top-0 left-0 flex-col items-start absolute">
+            <div className="relative w-[686px] h-[169px]">
+              <div className="inline-flex items-center gap-2.5 px-[26px] py-3.5 absolute top-[57px] left-[122px] bg-white rounded-[15px] border-2 border-solid border-neutral-200 min-h-[100px]">
+                <div className="relative w-[530px] h-[60px] border-b-2 border-solid border-[#afafaf]" />
+              </div>
+              <div className="absolute w-[114px] h-[114px] top-7 left-0 bg-orange-200 rounded-full flex items-center justify-center">
+                <div className="w-[80px] h-[80px] bg-orange-300 rounded-full flex items-center justify-center">
+                  <div className="text-orange-800 text-2xl">👤</div>
+                </div>
+              </div>
             </div>
-            <div className="absolute w-[114px] h-[169px] top-0 left-0" />
           </div>
         </div>
 

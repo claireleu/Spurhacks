@@ -24,6 +24,7 @@ import Rush            from './pages/Rush.jsx'
 import FillTheBlank    from './pages/questions/FillTheBlank'
 import SentenceSelect  from './pages/questions/SentenceSelect.jsx'
 import GameOver        from './pages/GameOver'
+import MultipleChoice  from './pages/questions/MultipleChoice.jsx';
 
 import PointsProvider from './context/Points'
 import ImageSelect from './pages/questions/ImageSelect.jsx';
@@ -56,6 +57,9 @@ const router = createBrowserRouter([
   }, {
     path: "/image-select",
     element: <ImageSelect />
+  }, {
+    path: "/multiple-choice",
+    element: <MultipleChoice />
   }
 ]);
 
