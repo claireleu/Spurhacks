@@ -46,18 +46,6 @@ function FillTheBlank({ hearts, setHearts, onContinue}) {
         onContinue(); 
     };
 
-    /*const handleContinue = () => { // click next buttom generates new question resets everything
-        setSelectedAnswer(null);
-        setShowFeedback(false);
-        fetch("http://127.0.0.1:5000/generate-fill-in-blank")
-        .then((res) => res.json())
-        .then((data) => {
-        console.log("Got response:", data); 
-        setQuestionData(data);
-        })
-        .catch((err) => console.error("Error fetching next question:", err));
-    };*/
-
     if (!questionData) return <p>Loading...</p>;
     const correctAnswer = questionData.answer;
     const isCorrect = selectedAnswer === correctAnswer;

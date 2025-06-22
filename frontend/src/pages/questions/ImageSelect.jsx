@@ -33,18 +33,6 @@ function ImageSelect({ hearts, setHearts, onContinue}) {
     }
     setShowFeedback(true);
   };
-/*
-  const handleContinue = () => {
-    setSelectedIndex(null);
-    setShowFeedback(false);
-    fetch("http://127.0.0.1:5000/generate-imageqs")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Got response:", data);
-        setQuestionData(data);
-      })
-      .catch((err) => console.error("Error fetching next image question:", err));
-  };*/
 
   const handleContinue = () => {
     setSelectedIndex(null);
@@ -102,7 +90,7 @@ function ImageSelect({ hearts, setHearts, onContinue}) {
           <FeedbackBanner
             isCorrect={isCorrect}
             handleContinue={handleContinue}
-            correctAnswer={"the correct image"} // You could customize this if needed
+            correctAnswer={"the correct image"}
           />
         )}
       </div>
