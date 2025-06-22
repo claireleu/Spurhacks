@@ -7,10 +7,11 @@ import {
 import './root.css';
 import Home from './pages/Home';
 import FillTheBlank from './pages/questions/FillTheBlank';
-import Endurance from './pages/Endurance.jsx'
+import Endurance from './pages/Endurance'
 import Rush from './pages/Rush.jsx'
-import SentenceSelect from './SentenceSelect.jsx';
+import SentenceSelect from './pages/questions/SentenceSelect';
 import GameOver from './pages/GameOver'
+import PointsProvider from './context/Points'
 
 const router = createBrowserRouter([
   {
@@ -19,24 +20,27 @@ const router = createBrowserRouter([
   }, {
     path: "/endurance",
     element: <Endurance />
-  },{
-    path: "/fill-the-blank",
-    element: <FillTheBlank />
   }, {
     path: "/rush",
     element: <Rush />
   }, {
-    path: "/sentence-select",
-    element: <SentenceSelect />
-  }, {
     path: "/gameover",
     element: <GameOver />
+  },
+  // Testing
+  {
+    path: "/fill-the-blank",
+    element: <FillTheBlank />
+  }, {
+    path: "/sentence-select",
+    element: <SentenceSelect />
   }
-
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <PointsProvider>
+      <RouterProvider router={router} />
+    </PointsProvider>
   </StrictMode>
 );

@@ -1,3 +1,5 @@
+import { usePoints } from "../../context/Points";
+
 const QuestionBackground = ({ children }) => {
     return (
         <div className="bg-grey min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
@@ -95,6 +97,15 @@ const QuestionCheck = ({ showFeedback, handleCheck, selectedAnswer }) => {
     );
 }
 
+const DisplayPoints = () => {
+    const { points } = usePoints()
+    return (
+        <div className="absolute top-15 right-5 font-Jersey-15 text-2xl text-white bg-black bg-opacity-30 px-4 py-2 rounded-lg">
+            Points: {points}
+        </div>
+    )
+}
+
 const FeedbackBanner = ({ isCorrect, handleContinue }) => (
     <div
         className={`fixed bottom-0 left-0 w-full p-6 text-white ${isCorrect ? "bg-[#d7ffb8]" : "bg-[#ffdfe0]"
@@ -122,4 +133,4 @@ const FeedbackBanner = ({ isCorrect, handleContinue }) => (
     </div >
 );
 
-export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner };
+export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints };

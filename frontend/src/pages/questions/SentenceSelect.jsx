@@ -1,5 +1,5 @@
 import React from "react";
-import crying from "./assets/crying.png";
+import crying from "../../assets/crying.png";
 
 export const SentenceSelect = () => {
   return (
