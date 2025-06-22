@@ -7,12 +7,19 @@ function App() {
   const [count, setCount] = useState(0)
   const [questionData, setQuestionData] = useState(null)
 
+  const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const [hasSubmitted, setHasSubmitted] = useState(false)
+  const [isCorrect, setIsCorrect] = useState(null)
+
   const getDefmcq = async () => {
     try {
       const response = await fetch('http://127.0.0.1:5000/generate-definition-mc')
       const data = await response.json()
-      setQuestionData(data) /*added .text before by app.py is already only returning .text*/
-      console.log('Got response:', data)
+      setQuestionData(data)
+      setSelectedAnswer(null)
+      setHasSubmitted(false)
+      setIsCorrect(null)
+      console.log('Got response and all set up, response:', data)
     } catch (err) {
       console.error('Failed to fetch question', err)
     }
@@ -36,7 +43,7 @@ function App() {
           <p>{questionData.word}</p>
           <div>
             {questionData.choices.map((choice, index) => (
-              <button key={index} style={{ margin: '0.5rem' }}>{choice}</button>
+              <button key={index} onClick={() => setSelectedAnswer(choice)}>{choice}</button>
             ))}
           </div>
         </div>

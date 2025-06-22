@@ -1,11 +1,15 @@
 import os
 import json
+import random
 from google import genai
 from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 
 load_dotenv()
+
+with open('../frontend/src/data/imageDataset.json') as f:
+    image_dataset = json.load(f)
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:5173"])
@@ -50,6 +54,36 @@ def generate_definitionmc():
     print(jsonres)
     return jsonify(jsonres)
 
+@app.route('/generate-imageqs')
+@cross_origin (origin='http://localhost:5173')
+def generate_imageq() :
+    correct_set = random.choice(image_dataset)
+    correct_label = correct_set['label']
+    print(correct_label)
+    correct_image = correct_set["image"]
+
+    others = []
+    for item in image_dataset:
+        if item['label'] != correct_label:
+            others.append(item["image"])
+
+    distractors = random.sample(others, 2)
+    options = [correct_image, distractors[0], distractors[1]]
+    random.shuffle(options)
+
+    for idx, img in enumerate(options):
+        print(f"  Option {idx}:", img)
+
+    correct_index = next(i for i, opt in enumerate(options) if opt == correct_image)
+    print(correct_index)
+    question_obj = {
+        "text": f'Which of these is "{correct_label}"?',
+        "options": options,
+        "correctIndex": correct_index
+    }
+    print(question_obj)
+
+    return jsonify(question_obj)
 
 if __name__ == '__main__':
     app.run(debug=True)
