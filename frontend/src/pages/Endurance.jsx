@@ -9,13 +9,13 @@ import { useMode } from "../context/useContext";
 
 function Endurance() {
   const [hearts, setHearts] = useState(3)
-  const [questionKey, setQuestionKey] = useState(0);
+  const [setQuestionKey] = useState(0);
   const [questionType, setQuestionType] = useState(() => getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
-
   const { setMode } = useMode()
 
   useEffect(() => {
     setMode("endurance")
+    setHearts(3)
   }, [])
 
   const handleContinue = () => {

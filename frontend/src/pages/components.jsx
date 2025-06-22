@@ -1,5 +1,6 @@
 import background from "../assets/background.png";
-import heartImg from "../assets/heart.png";
+import fullHeart from "../assets/fullHeart.png";
+import emptyHeart from "../assets/emptyHeart.png";
 
 const BackgroundContainer = ({ children }) => {
     return (
@@ -14,9 +15,9 @@ const Heart = ({ className, filled = false, pulse = false }) => {
     return (
         <div className={`hover:scale-103 transition-all w-16 h-16 ${className} ${pulse && "animate-pulse duration-1000 ease-in-out"}`}>
             <img 
-                src={heartImg} 
+                src={filled ? fullHeart : emptyHeart } 
                 alt="heart" 
-                className={`w-full h-full object-contain ${filled ? 'opacity-100' : 'opacity-50'}`}
+                className={"w-full h-full object-contain"}
             />
         </div>
     )

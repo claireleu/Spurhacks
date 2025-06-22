@@ -26,7 +26,7 @@ function Rush() {
   }, [timeLeft]);
 
   const handleContinue = () => {
-    setQuestionKey((prev) => prev + 1); // to force remount if needed
+    setQuestionKey((prev) => prev + 1);
     setQuestionType(getRandomQuestionType(["fill-in-the-blank", "multiple-choice", "image"]));
   };
 

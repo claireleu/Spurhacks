@@ -1,12 +1,13 @@
 import { QuestionBackground, QuestionContent, QuestionText, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
 import React, { useState, useEffect } from "react";
-import Endurance from "../Endurance"
+import { usePoints, useHearts } from "../../context/useContext";
 
-function MultipleChoice({ hearts, setHearts, onContinue}) {
+function MultipleChoice({ onContinue}) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [questionData, setQuestionData] = useState(null);
-
+  const { hearts, setHearts } = useHearts()
+  const { subtractPoints } = usePoints()
 
   useEffect(() => {
   fetch("http://127.0.0.1:5000/generate-definition-mc")
@@ -35,6 +36,7 @@ function MultipleChoice({ hearts, setHearts, onContinue}) {
           return;
         }
     }
+    subtractPoints()
   setShowFeedback(true);
   };
 

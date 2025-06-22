@@ -1,20 +1,24 @@
 import amongus from "../../assets/amongus.png";
+import { usePoints, useHearts } from "../../context/useContext";
 import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
 import React, { useState, useEffect } from "react";
 
-function FillTheBlank({ hearts, setHearts, onContinue}) {
+function FillTheBlank({ onContinue }) {
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [showFeedback, setShowFeedback] = useState(false);
     const [questionData, setQuestionData] = useState(null);
+    const { hearts, setHearts } = useHearts()
+    const { subtractPoints } = usePoints()
+
 
     useEffect(() => {
-    fetch("http://127.0.0.1:5000/generate-fill-in-blank")
-      .then((res) => res.json())
-      .then((data) => {
-      console.log("Got response:", data); 
-      setQuestionData(data);
-      })
-      .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
+        fetch("http://127.0.0.1:5000/generate-fill-in-blank")
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("Got response:", data);
+                setQuestionData(data);
+            })
+            .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
     }, []);
 
     const handleWordClick = (word) => { // clicking on a word before you submit 
@@ -27,19 +31,20 @@ function FillTheBlank({ hearts, setHearts, onContinue}) {
         const correctAnswer = questionData?.answer;
         const isCorrect = selectedAnswer === correctAnswer;
         if (!isCorrect && setHearts) {
-            setHearts(prev => prev - 1);
+          setHearts(prev => prev - 1);
             if (hearts === 1) {
-                setTimeout(() => window.location.href = "/gameover", 100);
-                return;
+              setTimeout(() => window.location.href = "/gameover", 100);
+              return;
             }
         }
-    setShowFeedback(true);
-    };
+        subtractPoints()
+      setShowFeedback(true);
+      };
 
     const handleContinue = () => {
         setSelectedAnswer(null);
         setShowFeedback(false);
-        onContinue(); 
+        onContinue();
     };
 
     if (!questionData) return <p>Loading...</p>;
@@ -74,22 +79,19 @@ function FillTheBlank({ hearts, setHearts, onContinue}) {
                     showFeedback={showFeedback}
                     isCorrect={isCorrect}
                 />
-
             </QuestionContent>
-
-
             <div className="relative w-full" style={{ height: "125px" }}>
                 <QuestionCheck
-                showFeedback={showFeedback}
-                handleCheck={handleCheck}
-                selectedAnswer={selectedAnswer}
+                    showFeedback={showFeedback}
+                    handleCheck={handleCheck}
+                    selectedAnswer={selectedAnswer}
                 />
                 {showFeedback && (
-                <FeedbackBanner
-                    isCorrect={isCorrect}
-                    handleContinue={handleContinue}
-                    correctAnswer={correctAnswer}
-                />
+                    <FeedbackBanner
+                        isCorrect={isCorrect}
+                        handleContinue={handleContinue}
+                        correctAnswer={correctAnswer}
+                    />
                 )}
             </div>
         </QuestionBackground>

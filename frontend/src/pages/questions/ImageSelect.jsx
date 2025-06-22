@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionText, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
+import { usePoints, useHearts } from "../../context/useContext";
 
-function ImageSelect({ hearts, setHearts, onContinue}) {
+function ImageSelect({ onContinue}) {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [questionData, setQuestionData] = useState(null);
+  const { hearts, setHearts } = useHearts()
+  const { subtractPoints } = usePoints()
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/generate-imageqs")
@@ -23,15 +26,17 @@ function ImageSelect({ hearts, setHearts, onContinue}) {
   };
 
   const handleCheck = () => {
-    const isCorrect = selectedIndex === questionData.correctIndex;
+    const correctAnswer = questionData?.answer;
+    const isCorrect = selectedIndex === correctAnswer;
     if (!isCorrect && setHearts) {
       setHearts(prev => prev - 1);
-      if (hearts === 1) {
-        setTimeout(() => window.location.href = "/gameover", 100);
-        return;
-      }
+        if (hearts === 1) {
+          setTimeout(() => window.location.href = "/gameover", 100);
+          return;
+        }
     }
-    setShowFeedback(true);
+    subtractPoints()
+  setShowFeedback(true);
   };
 
   const handleContinue = () => {

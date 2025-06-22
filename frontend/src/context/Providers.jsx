@@ -9,10 +9,6 @@ const PointsProvider = ({ children }) => {
         setPoints(prev => prev + amount);
     }, []);
 
-    const subtractPoints = useCallback((amount) => {
-        setPoints(prev => Math.max(0, prev - amount));
-    }, []);
-
     const resetPoints = useCallback(() => {
         setPoints(0);
     }, []);
@@ -25,7 +21,6 @@ const PointsProvider = ({ children }) => {
         points,
         highscore,
         addPoints,
-        subtractPoints,
         resetPoints,
         updateHighScore
     };
@@ -54,7 +49,6 @@ const HeartsProvider = ({ children }) => {
 
 const ModeProvider = ({ children }) => {
     const [mode, setMode] = useState(() => {
-        // Initialize from localStorage if available, otherwise default to 'rush'
         const savedMode = localStorage.getItem('gameMode');
         return savedMode || 'rush';
     });
