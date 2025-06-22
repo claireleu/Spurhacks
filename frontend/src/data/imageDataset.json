@@ -1,11 +1,35 @@
 [
   {
+    "image": "../../public/questionimages/anita_max_wynn.png",
+    "label": "Anita Max Wynn"
+  },
+  {
+    "image": "../../public/questionimages/bakudeku.png",
+    "label": "Bakudeku"
+  },
+  {
+    "image": "../../public/questionimages/blue_shirt_guy.png",
+    "label": "Blue Shirt Guy"
+  },
+  {
     "image": "../../public/questionimages/bombardiro_crocodilo.jpg",
     "label": "Bombardiro Crocodilo"
   },
   {
     "image": "../../public/questionimages/br_br_patapim.png",
     "label": "Br Br Patapim"
+  },
+  {
+    "image": "../../public/questionimages/chopped_chin.png",
+    "label": "Chopped Chin"
+  },
+  {
+    "image": "../../public/questionimages/grow_a_garden.png",
+    "label": "Grow a Garden"
+  },
+  {
+    "image": "../../public/questionimages/grimace_shake.png",
+    "label": "Grimace Shake"
   },
   {
     "image": "../../public/questionimages/its_not_clocking.png",
@@ -16,12 +40,20 @@
     "label": "John Pork"
   },
   {
+    "image": "../../public/questionimages/kai_cenat.png",
+    "label": "Kai Cenat"
+  },
+  {
     "image": "../../public/questionimages/lirili_larila.png",
     "label": "Lirili Larila"
   },
   {
     "image": "../../public/questionimages/lmao.jpg",
     "label": "LMAO"
+  },
+  {
+    "image": "../../public/questionimages/oiiaioiiiiai.png",
+    "label": "Oiiaioiiiiai"
   },
   {
     "image": "../../public/questionimages/shimpanzini_bananini.png",
