@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import viteLogo from '../public/vite.svg'
 
 function App() {
   const [count, setCount] = useState(0)
