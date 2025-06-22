@@ -26,8 +26,7 @@ function ImageSelect({ onContinue }) {
   };
 
   const handleCheck = () => {
-    const correctAnswer = questionData?.answer;
-    const isCorrect = selectedIndex === correctAnswer;
+    const isCorrect = selectedIndex === questionData.correctIndex;
     if (!isCorrect) {
       setHearts(prev => prev - 1);
       if (hearts === 1) {
@@ -35,7 +34,7 @@ function ImageSelect({ onContinue }) {
         return;
       }
     } else {
-      addPoints()
+      addPoints();
     }
     setShowFeedback(true);
   };

@@ -20,8 +20,8 @@ const PointsProvider = ({ children }) => {
         }
     }, [points, highscore]);
 
-    const addPoints = useCallback((amount) => {
-        setPoints(prev => prev + amount);
+    const addPoints = useCallback(() => {
+        setPoints(prev => prev + 1);
     }, []);
 
     const resetPoints = useCallback(() => {

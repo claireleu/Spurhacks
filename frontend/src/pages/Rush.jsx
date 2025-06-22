@@ -4,16 +4,18 @@ import MultipleChoice from "./questions/MultipleChoice";
 import ImageSelect from "./questions/ImageSelect";
 import getRandomQuestionType from "./Randomiser";
 import { DisplayPoints } from "./questions/components";
-import { useMode } from "../context/useContext";
+import { useMode, usePoints } from "../context/useContext";
 
 function Rush() {
     const [timeLeft, setTimeLeft] = useState(10);
     const [questionKey, setQuestionKey] = useState(0);
     const [questionType, setQuestionType] = useState(() => getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
-    const { setMode } = useMode()
+    const { setMode } = useMode();
+    const { resetPoints } = usePoints();
 
     useEffect(() => {
-      setMode("rush")
+      setMode("rush");
+      resetPoints();
     }, [])
 
   useEffect(() => {
