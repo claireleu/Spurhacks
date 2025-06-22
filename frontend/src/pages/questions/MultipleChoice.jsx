@@ -1,11 +1,11 @@
 import { QuestionBackground, QuestionContent, QuestionText, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
 import React, { useState, useEffect } from "react";
+import Endurance from "../Endurance"
 
 function MultipleChoice({ hearts, setHearts }) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [questionData, setQuestionData] = useState(null);
-  const correctAnswer = questionData?.answer;
 
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function MultipleChoice({ hearts, setHearts }) {
   setShowFeedback(true);
   };
 
-  const handleContinue = () => { // click next buttom generates new question resets everything
+  const handleContinue = () => { // click next buttom resets everything with endurance
     setSelectedAnswer(null);
     setShowFeedback(false);
     fetch("http://127.0.0.1:5000/generate-definition-mc")
@@ -53,6 +53,7 @@ function MultipleChoice({ hearts, setHearts }) {
   };
 
   if (!questionData) return <p>Loading...</p>;
+  const correctAnswer = questionData.answer;
   const isCorrect = selectedAnswer === correctAnswer;
 
   return (

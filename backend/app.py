@@ -40,13 +40,13 @@ def generate_definitionmc():
     print("Frontend hit the endpoint!")
     response = client.models.generate_content(
         model="gemini-2.0-flash",
-        contents="give me one brain rot slang word from internet culture, pop culture reference," \
+        contents="give me one brain rot slang word (NOT RIZZ) from internet culture, pop culture reference," \
         "tiktok commen section, common recent acronyms like pmo. then give me the normal english translation" \
         "of the slang word along with two distractors. Return the result in this exact" \
         "JSON format:{ word: ..., choices: [...], answer: ...}",
         config={
         "response_mime_type": "application/json",
-        "temperature": 0.5,
+        "temperature": 0.7,
         },
     )
     print(response)

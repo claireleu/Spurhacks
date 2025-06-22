@@ -21,7 +21,6 @@ import Home            from './pages/Home'
 import Endurance       from './pages/Endurance.jsx'
 import Rush            from './pages/Rush.jsx'
 import FillTheBlank    from './pages/questions/FillTheBlank'
-import SentenceSelect  from './pages/questions/SentenceSelect.jsx'
 import GameOver        from './pages/GameOver'
 import MultipleChoice  from './pages/questions/MultipleChoice.jsx';
 
@@ -47,9 +46,6 @@ const router = createBrowserRouter([
   {
     path: "/fill-the-blank",
     element: <FillTheBlank />
-  }, {
-    path: "/sentence-select",
-    element: <SentenceSelect />
   }, {
     path: "/gameover",
     element: <GameOver />
