@@ -1,39 +1,54 @@
 import amongus from "../../assets/amongus.png";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner } from "./components"
 
 function FillTheBlank({ hearts, setHearts }) {
     const correctAnswer = "sigma";
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [showFeedback, setShowFeedback] = useState(false);
+    const [questionData, setQuestionData] = useState(null);
 
-    const handleWordClick = (word) => {
+
+    useEffect(() => {
+    fetch("http://127.0.0.1:5000/generate-fill-in-blank")
+      .then((res) => res.json())
+      .then((data) => setQuestionData(data))
+      .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
+    }, []);
+
+    const handleWordClick = (word) => { // clicking on a word before you submit 
         if (!showFeedback) {
             setSelectedAnswer(word);
         }
     };
 
     const handleCheck = () => {
-        if (selectedAnswer && setHearts) {
-            setHearts(prev => prev - 1);
-            if (hearts === 1) {
-                setTimeout(() => window.location.href = "/gameover", 100);
-                return;
-            } 
+        if (selectedAnswer && selectedAnswer !== questionData.answer) { // once submitted check if word is right
+        setHearts((prev) => prev - 1);
+        if (hearts === 1) {
+            setTimeout(() => (window.location.href = "/gameover"), 100); // if wrong and no hearts left game over
+            return;
+        }
         }
         setShowFeedback(true);
     };
 
-    const handleContinue = () => {
+    const handleContinue = () => { // click next buttom generates new question resets everything
         setSelectedAnswer(null);
         setShowFeedback(false);
+        fetch("http://127.0.0.1:5000/generate-fill-in-blank")
+        .then((res) => res.json())
+        .then((data) => setQuestionData(data))
+        .catch((err) => console.error("Error fetching next question:", err));
     };
 
+    if (!questionData) return <p>Loading...</p>;
     const isCorrect = selectedAnswer === correctAnswer;
 
     return (
         <QuestionBackground>
             <QuestionContent>
+
                 <div className="w-full flex justify-between items-center px-4 py-2">
                     <button
                         onClick={() => (window.location.href = "/")}
@@ -43,26 +58,38 @@ function FillTheBlank({ hearts, setHearts }) {
                     </button>
                     <div></div>
                 </div>
+
                 <QuestionQuestion
                     image={amongus}
-                    question={`Erm what the ${showFeedback && selectedAnswer ? selectedAnswer : "________"}.`}
+                    question={questionData.sentence.replace(questionData.answer,
+                        showFeedback && selectedAnswer ? selectedAnswer : "________")}
                 />
+
                 <QuestionAnswers
-                    answers={["sigma", "sus", "skibidi", "toilet"]}
+                    answers={questionData.choices}
                     selectedAnswer={selectedAnswer}
                     handleWordClick={handleWordClick}
                     showFeedback={showFeedback}
                     isCorrect={isCorrect}
                 />
+
             </QuestionContent>
+
+
             <div className="relative w-full" style={{ height: "125px" }}>
                 <QuestionCheck
-                    showFeedback={showFeedback}
-                    handleCheck={handleCheck}
-                    selectedAnswer={selectedAnswer}
+                showFeedback={showFeedback}
+                handleCheck={handleCheck}
+                selectedAnswer={selectedAnswer}
                 />
-                {showFeedback && <FeedbackBanner isCorrect={isCorrect} handleContinue={handleContinue} />}
+                {showFeedback && (
+                <FeedbackBanner
+                    isCorrect={isCorrect}
+                    handleContinue={handleContinue}
+                />
+                )}
             </div>
+
         </QuestionBackground>
     );
 }
