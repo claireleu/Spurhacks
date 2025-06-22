@@ -33,7 +33,7 @@ const QuestionAnswers = ({ answers, selectedAnswer, handleWordClick, showFeedbac
         return (
             <div
                 onClick={!disabled ? onClick : undefined}
-                className={`${className} ${divClassName} ${state} rounded-lg px-4 py-2 shadow-md ${disabled ? "cursor-not-allowed" : "cursor-pointer"
+                className={`${className} ${divClassName} ${state} rounded-lg hover:scale-105 ring-2 px-4 py-2 shadow-md ${disabled ? "cursor-not-allowed" : "cursor-pointer"
                     }`}
             >
                 {text}
@@ -44,22 +44,22 @@ const QuestionAnswers = ({ answers, selectedAnswer, handleWordClick, showFeedbac
     return (
         <div className="flex flex-wrap items-center justify-center gap-4 my-8">
             {answers.map((answer) => {
-                let stateClasses = "bg-white";
+                let stateClasses = "bg-gray-500";
                 if (showFeedback) {
                     if (isCorrect) {
                         stateClasses =
                             answer === selectedAnswer
-                                ? "bg-[#d7ffb8]"
-                                : "bg-gray-100 text-gray-400";
+                                ? "bg-green-600"
+                                : "bg-red-600 text-gray-400";
                     } else {
                         if (answer === selectedAnswer) {
-                            stateClasses = "bg-[#ffdfe0]";
+                            stateClasses = "bg-gray-500";
                         } else {
-                            stateClasses = "bg-gray-100 text-gray-400";
+                            stateClasses = "bg-gray-500 text-gray-400";
                         }
                     }
                 } else if (answer === selectedAnswer) {
-                    stateClasses = "bg-gray-300";
+                    stateClasses = "bg-gray-800";
                 }
 
                 return (
@@ -182,4 +182,4 @@ const QuestionLongOptions = ({ answers, selectedAnswer, handleWordClick, showFee
     )
 }
 
-export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, QuestionLongOptions };
+export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions };

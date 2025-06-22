@@ -26,14 +26,13 @@ const HomeButton = ({ label, icon, to }) => {
 };
 
 function Home() {
-  const { highscore } = usePoints()
 
   return (
     <BackgroundContainer>
       <div className="absolute top-5 right-5 font-Jersey-15 text-3xl text-white bg-black bg-opacity-30 px-4 py-2 rounded-lg">
-        Highscore: {highscore}
+        
       </div>
-      <div className="relative w-[90vw] max-w-[700px] h-fit rounded-3xl border-4 border-white bg-gradient-to-b from-porsche-500 to-burnt-sienna-400 flex items-center p-8 shadow-lg">
+      <div className="relative h-full w-full rounded-3xl border-4 border-white bg-gradient-to-b from-porsche-500 to-burnt-sienna-400 flex items-center p-8 shadow-lg">
         <img
           src={logo}
           alt="Duoslango logo"
