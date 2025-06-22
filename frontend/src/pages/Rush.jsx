@@ -7,7 +7,7 @@ import { DisplayPoints } from "./questions/components";
 import { useMode, usePoints } from "../context/useContext";
 
 function Rush() {
-    const [timeLeft, setTimeLeft] = useState(10);
+    const [timeLeft, setTimeLeft] = useState(30);
     const [questionKey, setQuestionKey] = useState(0);
     const [questionType, setQuestionType] = useState(() => getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
     const { setMode } = useMode();

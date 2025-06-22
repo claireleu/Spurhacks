@@ -1,4 +1,4 @@
-import amongus from "../../assets/amongus.png";
+import slangoEye from "../../assets/slango-eye.png";
 import { usePoints, useHearts } from "../../context/useContext";
 import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
 import React, { useState, useEffect } from "react";
@@ -74,7 +74,7 @@ function FillTheBlank({ onContinue }) {
                 </div>
 
                 <QuestionQuestion
-                    image={amongus}
+                    image={slangoEye}
                     question={questionData.sentence.replace(questionData.answer,
                         showFeedback && selectedAnswer ? selectedAnswer : "________")}
                 />

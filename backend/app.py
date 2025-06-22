@@ -21,13 +21,16 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 def generate_fillinblank():
     response = client.models.generate_content(
         model="gemini-2.0-flash",
-        contents="Write one sentence with meaning. Use at most 4 words from 2024–2025 brainrot language," \
-        "internet slang, pop culture references, or TikTok comment sections. Keep the sentence between 15 - 25 words, with a clear focus and no emojis." \
-        "Then, replace one slang word with a blank in the form of five underscores (_____).you can only replace ONE WORD. Return 5 multiple choice options for that blank — 1 correct word being the one you replaced with the blank and" \
-        "4 plausible distractors. Return the result in this exact JSON format:{ sentence: ..., choices: [...], answer: ...}",
+        contents="Write one grammatically correct sentence with clear meaning." \
+        "Use at most one word from 2024–2025 brainrot language, internet slang," \
+        "pop culture references, or TikTok comment sections. The sentence should be" \
+        "between 15 to 20 words, focused and without emojis. Do NOT use the word 'era'." \
+        "Replace exactly one slang word in the sentence with a blank represented by five underscores (_____)." \
+        "Provide 5 multiple choice options for that blank: 1 correct answer (the replaced word) and 4 plausible but not too similar" \
+        "slang distractors. Return the result in this exact JSON format: { sentence: ..., choices: [...], answer: ... }",
         config={
         "response_mime_type": "application/json",
-        "temperature": 0.5,
+        "temperature": 0.7,
         },
     )
 
@@ -48,7 +51,7 @@ def generate_definitionmc():
         "{ word: ..., choices: [..., ..., ...], answer: ... }",
         config={
         "response_mime_type": "application/json",
-        "temperature": 0.5,
+        "temperature": 0.7,
         },
     )
     print(response)
