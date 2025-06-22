@@ -41,8 +41,8 @@ def generate_definitionmc():
     response = client.models.generate_content(
         model="gemini-2.0-flash",
         contents="You are a Gen Z internet linguist. Pick ONE recent and **less common** slang word or acronym used in 2024–2025 internet"
-        "or pop culture (e.g., TikTok, Twitter, niche comment sections). Avoid mainstream or overused words like 'rizz', 'sus', 'delulu',"
-        "or any words already widely known. Give the **standard English definition**" \
+        "or pop culture (e.g., TikTok, Twitter, niche comment sections). Avoid overused words like 'rizz', 'sus', 'delulu',"
+        "or any words already widely known. Think harder than you usually do. Give the **standard English definition**" \
         "of the chosen slang word, along with two **plausible but incorrect distractors** (that sound related but aren't accurate definitions)." \
         "Return the result in this EXACT JSON format:" \
         "{ word: ..., choices: [..., ..., ...], answer: ... }",

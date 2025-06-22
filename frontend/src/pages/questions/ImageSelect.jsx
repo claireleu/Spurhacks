@@ -102,9 +102,10 @@ function ImageSelect({ onContinue }) {
           <FeedbackBanner
             isCorrect={isCorrect}
             handleContinue={handleContinue}
-            correctAnswer={"the correct image"}
+            correctAnswer={`Image: ${questionData.correctIndex + 1}`}
           />
         )}
+
       </div>
     </QuestionBackground>
   );
