@@ -25,6 +25,9 @@ import FillTheBlank    from './pages/questions/FillTheBlank'
 import SentenceSelect  from './pages/questions/SentenceSelect.jsx'
 import GameOver        from './pages/GameOver'
 
+import PointsProvider from './context/Points'
+import ImageSelect from './pages/questions/ImageSelect.jsx';
+
 
 const router = createBrowserRouter([
   {

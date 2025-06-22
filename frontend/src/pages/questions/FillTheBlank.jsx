@@ -1,8 +1,6 @@
 import amongus from "../../assets/amongus.png";
-import React, { useState } from "react";
 import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
 import React, { useState, useEffect } from "react";
-import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner } from "./components"
 
 function FillTheBlank({ hearts, setHearts }) {
     const correctAnswer = "sigma";
