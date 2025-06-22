@@ -2,7 +2,7 @@ import amongus from "../../assets/amongus.png";
 import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
 import React, { useState, useEffect } from "react";
 
-function FillTheBlank({ hearts, setHearts }) {
+function FillTheBlank({ hearts, setHearts, onContinue}) {
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [showFeedback, setShowFeedback] = useState(false);
     const [questionData, setQuestionData] = useState(null);
@@ -40,7 +40,13 @@ function FillTheBlank({ hearts, setHearts }) {
     setShowFeedback(true);
     };
 
-    const handleContinue = () => { // click next buttom generates new question resets everything
+    const handleContinue = () => {
+        setSelectedAnswer(null);
+        setShowFeedback(false);
+        onContinue(); 
+    };
+
+    /*const handleContinue = () => { // click next buttom generates new question resets everything
         setSelectedAnswer(null);
         setShowFeedback(false);
         fetch("http://127.0.0.1:5000/generate-fill-in-blank")
@@ -50,7 +56,7 @@ function FillTheBlank({ hearts, setHearts }) {
         setQuestionData(data);
         })
         .catch((err) => console.error("Error fetching next question:", err));
-    };
+    };*/
 
     if (!questionData) return <p>Loading...</p>;
     const correctAnswer = questionData.answer;

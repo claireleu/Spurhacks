@@ -2,7 +2,7 @@ import { QuestionBackground, QuestionContent, QuestionText, QuestionAnswers, Que
 import React, { useState, useEffect } from "react";
 import Endurance from "../Endurance"
 
-function MultipleChoice({ hearts, setHearts }) {
+function MultipleChoice({ hearts, setHearts, onContinue}) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [questionData, setQuestionData] = useState(null);
@@ -40,17 +40,12 @@ function MultipleChoice({ hearts, setHearts }) {
   setShowFeedback(true);
   };
 
-  const handleContinue = () => { // click next buttom resets everything with endurance
+  const handleContinue = () => {
     setSelectedAnswer(null);
     setShowFeedback(false);
-    fetch("http://127.0.0.1:5000/generate-definition-mc")
-    .then((res) => res.json())
-    .then((data) => {
-    console.log("Got response:", data); 
-    setQuestionData(data);
-    })
-    .catch((err) => console.error("Error fetching next question:", err));
+    onContinue(); // 🔁 calls parent to rerender with new random question
   };
+
 
   if (!questionData) return <p>Loading...</p>;
   const correctAnswer = questionData.answer;
@@ -100,3 +95,15 @@ function MultipleChoice({ hearts, setHearts }) {
 }
 
 export default MultipleChoice;
+
+ /*const handleContinue = () => { // click next buttom resets everything with endurance
+    setSelectedAnswer(null);
+    setShowFeedback(false);
+    fetch("http://127.0.0.1:5000/generate-definition-mc")
+    .then((res) => res.json())
+    .then((data) => {
+    console.log("Got response:", data); 
+    setQuestionData(data);
+    })
+    .catch((err) => console.error("Error fetching next question:", err));
+  };*/

@@ -11,10 +11,6 @@ import {
 // 3. Global CSS
 import './root.css'
 
-// 4. API-backed question widgets
-import Fitbq from './Fillintheblank.jsx'
-import Defmcq from './Defmcq.jsx'
-import Imageq from './Imageqs'
 
 // 5. App pages (for your <RouterProvider>)
 import Home            from './pages/Home'
