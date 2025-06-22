@@ -2,12 +2,13 @@ import { Heart } from "./components"
 import { useState } from "react";
 import FillTheBlank from "./questions/FillTheBlank"
 import ImageSelect from "./questions/ImageSelect"
+import MultipleChoice from "./questions/MultipleChoice"
 import { DisplayPoints } from "./questions/components";
 import getRandomQuestionType from "./Randomiser";
 
 function Endurance() {
     const [hearts, setHearts] = useState(3)
-    const currentQuestionTypes =  ["fill-in-the-blank", "multiple-choice", "image"]
+    const currentQuestionTypes =  ["image", "image", "image"]
     const randomQuestionType = getRandomQuestionType(currentQuestionTypes)
 
     return (
