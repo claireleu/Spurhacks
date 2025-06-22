@@ -29,14 +29,16 @@ function FillTheBlank({ hearts, setHearts }) {
     };
 
     const handleCheck = () => {
-        if (selectedAnswer && setHearts) {
+        const correctAnswer = questionData?.answer;
+        const isCorrect = selectedAnswer === correctAnswer;
+        if (!isCorrect && setHearts) {
             setHearts(prev => prev - 1);
             if (hearts === 1) {
                 setTimeout(() => window.location.href = "/gameover", 100);
                 return;
             }
         }
-        setShowFeedback(true);
+    setShowFeedback(true);
     };
 
     const handleContinue = () => { // click next buttom generates new question resets everything
