@@ -41,7 +41,7 @@ function MultipleChoice({ hearts, setHearts, onContinue}) {
   const handleContinue = () => {
     setSelectedAnswer(null);
     setShowFeedback(false);
-    onContinue(); // 🔁 calls parent to rerender with new random question
+    onContinue(); 
   };
 
 
@@ -93,15 +93,3 @@ function MultipleChoice({ hearts, setHearts, onContinue}) {
 }
 
 export default MultipleChoice;
-
- /*const handleContinue = () => { // click next buttom resets everything with endurance
-    setSelectedAnswer(null);
-    setShowFeedback(false);
-    fetch("http://127.0.0.1:5000/generate-definition-mc")
-    .then((res) => res.json())
-    .then((data) => {
-    console.log("Got response:", data); 
-    setQuestionData(data);
-    })
-    .catch((err) => console.error("Error fetching next question:", err));
-  };*/
