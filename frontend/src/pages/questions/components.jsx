@@ -182,4 +182,4 @@ const QuestionLongOptions = ({ answers, selectedAnswer, handleWordClick, showFee
     )
 }
 
-export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, QuestionLongOptions };
+export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, QuestionLongOptions, DisplayPoints };
