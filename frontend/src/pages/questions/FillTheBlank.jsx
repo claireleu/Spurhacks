@@ -12,8 +12,14 @@ function FillTheBlank({ hearts, setHearts }) {
     useEffect(() => {
     fetch("http://127.0.0.1:5000/generate-fill-in-blank")
       .then((res) => res.json())
-      .then((data) => setQuestionData(data))
+  
+      .then((data) => {
+      console.log("Got response:", data); 
+      setQuestionData(data);
+      })
+      
       .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
+
     }, []);
 
     const handleWordClick = (word) => { // clicking on a word before you submit 
