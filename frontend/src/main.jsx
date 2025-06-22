@@ -17,6 +17,7 @@ import Endurance from './pages/Endurance.jsx'
 import Rush from './pages/Rush.jsx'
 import SentenceSelect from './pages/questions/SentenceSelect.jsx';
 import GameOver from './pages/GameOver'
+import ImageSelect from './pages/questions/ImageSelect.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,9 @@ const router = createBrowserRouter([
   }, {
     path: "/gameover",
     element: <GameOver />
+  }, {
+    path: "/image-select",
+    element: <ImageSelect />
   }
 
 ]);
