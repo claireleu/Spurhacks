@@ -10,15 +10,7 @@ function FillTheBlank({ onContinue }) {
     const { hearts, setHearts } = useHearts()
     const { addPoints } = usePoints()
 
-
     useEffect(() => {
-        fetch("http://127.0.0.1:5000/generate-fill-in-blank")
-            .then((res) => res.json())
-            .then((data) => {
-                console.log("Got response:", data);
-                setQuestionData(data);
-            })
-            .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
         fetch("http://127.0.0.1:5000/generate-fill-in-blank")
             .then((res) => res.json())
             .then((data) => {
@@ -37,21 +29,21 @@ function FillTheBlank({ onContinue }) {
     const handleCheck = () => {
         const correctAnswer = questionData?.answer;
         const isCorrect = selectedAnswer === correctAnswer;
-        if (!isCorrect && setHearts) {
+        if (!isCorrect) {
             setHearts(prev => prev - 1);
             if (hearts === 1) {
                 setTimeout(() => window.location.href = "/gameover", 100);
                 return;
             }
+        } else {
+            addPoints()
         }
-        addPoints()
         setShowFeedback(true);
     };
 
     const handleContinue = () => {
         setSelectedAnswer(null);
         setShowFeedback(false);
-        onContinue();
         onContinue();
     };
 
@@ -94,29 +86,22 @@ function FillTheBlank({ onContinue }) {
                     showFeedback={showFeedback}
                     isCorrect={isCorrect}
                 />
+
             </QuestionContent>
+
+
             <div className="relative w-full" style={{ height: "125px" }}>
                 <QuestionCheck
                     showFeedback={showFeedback}
                     handleCheck={handleCheck}
                     selectedAnswer={selectedAnswer}
-                    showFeedback={showFeedback}
-                    handleCheck={handleCheck}
-                    selectedAnswer={selectedAnswer}
                 />
                 {showFeedback && (
-                    <>
-                        <FeedbackBanner
-                            isCorrect={isCorrect}
-                            handleContinue={handleContinue}
-                            correctAnswer={correctAnswer}
-                        />
-                        <FeedbackBanner
-                            isCorrect={isCorrect}
-                            handleContinue={handleContinue}
-                            correctAnswer={correctAnswer}
-                        />
-                    </>
+                    <FeedbackBanner
+                        isCorrect={isCorrect}
+                        handleContinue={handleContinue}
+                        correctAnswer={correctAnswer}
+                    />
                 )}
             </div>
         </QuestionBackground>

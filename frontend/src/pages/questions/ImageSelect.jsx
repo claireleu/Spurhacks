@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionText, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
 import { usePoints, useHearts } from "../../context/useContext";
 
-function ImageSelect({ onContinue}) {
+function ImageSelect({ onContinue }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [questionData, setQuestionData] = useState(null);
   const { hearts, setHearts } = useHearts()
-  const { subtractPoints } = usePoints()
+  const { addPoints } = usePoints()
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/generate-imageqs")
@@ -28,30 +28,31 @@ function ImageSelect({ onContinue}) {
   const handleCheck = () => {
     const correctAnswer = questionData?.answer;
     const isCorrect = selectedIndex === correctAnswer;
-    if (!isCorrect && setHearts) {
+    if (!isCorrect) {
       setHearts(prev => prev - 1);
-        if (hearts === 1) {
-          setTimeout(() => window.location.href = "/gameover", 100);
-          return;
-        }
+      if (hearts === 1) {
+        setTimeout(() => window.location.href = "/gameover", 100);
+        return;
+      }
+    } else {
+      addPoints()
     }
-    subtractPoints()
-  setShowFeedback(true);
+    setShowFeedback(true);
   };
 
   const handleContinue = () => {
     setSelectedIndex(null);
     setShowFeedback(false);
-    onContinue(); 
+    onContinue();
   };
 
   if (!questionData) {
-  return (
-    <div className="flex items-center justify-center h-screen">
-      <p className="text-gray-500 text-xl animate-pulse">Loading...</p>
-    </div>
-  );
-}
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-gray-500 text-xl animate-pulse">Loading...</p>
+      </div>
+    );
+  }
 
   const isCorrect = selectedIndex === questionData.correctIndex;
 

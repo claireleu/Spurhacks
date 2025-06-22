@@ -5,11 +5,11 @@ import ImageSelect from "./questions/ImageSelect"
 import MultipleChoice from "./questions/MultipleChoice"
 import { DisplayPoints } from "./questions/components";
 import getRandomQuestionType from "./Randomiser";
-import { useMode } from "../context/useContext";
+import { useMode, useHearts } from "../context/useContext";
 
 function Endurance() {
-  const [hearts, setHearts] = useState(3)
-  const [setQuestionKey] = useState(0);
+  const { hearts, setHearts } = useHearts();
+  const [questionKey, setQuestionKey] = useState(0);
   const [questionType, setQuestionType] = useState(() => getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
   const { setMode } = useMode()
 
@@ -18,6 +18,14 @@ function Endurance() {
     setHearts(3)
   }, [])
 
+  useEffect(() => {
+    if (hearts <= 0) {
+      setTimeout(() => {
+        window.location.href = "/gameover"
+      }, 100);
+    }
+  }, [hearts]);
+
   const handleContinue = () => {
     setQuestionKey(prev => prev + 1);
     setQuestionType(getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
@@ -25,10 +33,8 @@ function Endurance() {
 
   const renderQuestion = () => {
     const props = {
-      hearts,
-      setHearts,
       onContinue: handleContinue,
-      /*key: questionKey,*/
+      key: questionKey,
     };
 
     if (questionType === "fill-in-the-blank") {

@@ -2,8 +2,23 @@ import { useState, useCallback, useEffect } from "react"
 import { PointsContext, HeartsContext, ModeContext } from "./Context";
 
 const PointsProvider = ({ children }) => {
-    const [highscore, setHighScore] = useState(0)
-    const [points, setPoints] = useState(0)
+    const [points, setPoints] = useState(() => {
+        const savedPoints = localStorage.getItem('points');
+        return savedPoints ? parseInt(savedPoints, 10) : 0;
+    });
+
+    const [highscore, setHighScore] = useState(() => {
+        const savedHighScore = localStorage.getItem('highscore');
+        return savedHighScore ? parseInt(savedHighScore, 10) : 0;
+    });
+
+    useEffect(() => {
+        localStorage.setItem('points', points);
+        if (points > highscore) {
+            setHighScore(points);
+            localStorage.setItem('highscore', points);
+        }
+    }, [points, highscore]);
 
     const addPoints = useCallback((amount) => {
         setPoints(prev => prev + amount);
@@ -13,16 +28,11 @@ const PointsProvider = ({ children }) => {
         setPoints(0);
     }, []);
 
-    const updateHighScore = useCallback((newScore) => {
-        setHighScore(prev => Math.max(prev, newScore));
-    }, []);
-
     const value = {
         points,
         highscore,
         addPoints,
         resetPoints,
-        updateHighScore
     };
 
     return (
