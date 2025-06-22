@@ -100,7 +100,7 @@ const QuestionCheck = ({ showFeedback, handleCheck, selectedAnswer }) => {
 const DisplayPoints = () => {
     const { points } = usePoints()
     return (
-        <div className="absolute top-15 right-5 font-Jersey-15 text-2xl text-white bg-black bg-opacity-30 px-4 py-2 rounded-lg">
+        <div className="absolute top-16 right-5 font-Jersey-15 text-2xl text-white bg-black bg-opacity-30 px-4 py-2 rounded-lg">
             Points: {points}
         </div>
     )
