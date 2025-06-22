@@ -3,10 +3,10 @@ import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers,
 import React, { useState, useEffect } from "react";
 
 function FillTheBlank({ hearts, setHearts }) {
-    const correctAnswer = "sigma";
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [showFeedback, setShowFeedback] = useState(false);
     const [questionData, setQuestionData] = useState(null);
+    const correctAnswer = questionData?.answer;
 
 
     useEffect(() => {
@@ -29,14 +29,16 @@ function FillTheBlank({ hearts, setHearts }) {
     };
 
     const handleCheck = () => {
-        if (selectedAnswer && setHearts) {
+        const correctAnswer = questionData?.answer;
+        const isCorrect = selectedAnswer === correctAnswer;
+        if (!isCorrect && setHearts) {
             setHearts(prev => prev - 1);
             if (hearts === 1) {
                 setTimeout(() => window.location.href = "/gameover", 100);
                 return;
             }
         }
-        setShowFeedback(true);
+    setShowFeedback(true);
     };
 
     const handleContinue = () => { // click next buttom generates new question resets everything
@@ -44,7 +46,10 @@ function FillTheBlank({ hearts, setHearts }) {
         setShowFeedback(false);
         fetch("http://127.0.0.1:5000/generate-fill-in-blank")
         .then((res) => res.json())
-        .then((data) => setQuestionData(data))
+        .then((data) => {
+        console.log("Got response:", data); 
+        setQuestionData(data);
+        })
         .catch((err) => console.error("Error fetching next question:", err));
     };
 

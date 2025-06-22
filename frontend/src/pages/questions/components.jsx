@@ -123,8 +123,8 @@ const FeedbackBanner = ({ isCorrect, handleContinue }) => (
             <button
                 onClick={handleContinue}
                 className={`px-8 py-3 rounded-lg text-xl font-bold ${isCorrect
-                    ? "bg-green-500 text-white"
-                    : "bg-red-500 text-white"
+                    ? "bg-green-500 text-green"
+                    : "bg-red-500 text-red"
                     }`}
             >
                 CONTINUE
