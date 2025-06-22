@@ -133,4 +133,53 @@ const FeedbackBanner = ({ isCorrect, handleContinue }) => (
     </div >
 );
 
-export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints };
+const QuestionLongOptions = ({ answers, selectedAnswer, handleWordClick, showFeedback, isCorrect }) => {
+
+    const Word = ({ className, divClassName, state, text, onClick, disabled }) => {
+        return (
+            <div
+                onClick={!disabled ? onClick : undefined}
+                className={`${className} ${divClassName} ${state} rounded-lg px-4 py-4 shadow-md w-full ${disabled ? "cursor-not-allowed" : "cursor-pointer"
+                    }`}
+            >
+                {text}
+            </div>
+        );
+    }
+
+    return (
+        <div className="flex flex-col items-center gap-4 my-8 w-full">
+            {answers.map((answer) => {
+                let stateClasses = "bg-white";
+                if (showFeedback) {
+                    if (isCorrect) {
+                        stateClasses =
+                            answer === selectedAnswer
+                                ? "bg-[#d7ffb8]"
+                                : "bg-gray-100 text-gray-400";
+                    } else {
+                        if (answer === selectedAnswer) {
+                            stateClasses = "bg-[#ffdfe0]";
+                        } else {
+                            stateClasses = "bg-gray-100 text-gray-400";
+                        }
+                    }
+                } else if (answer === selectedAnswer) {
+                    stateClasses = "bg-gray-300";
+                }
+
+                return (
+                    <Word
+                        key={answer}
+                        text={answer}
+                        onClick={() => handleWordClick(answer)}
+                        disabled={showFeedback}
+                        divClassName={`text-2xl md:text-3xl font-Jersey-15 px-6 py-4 rounded-lg transition-all duration-200 ${stateClasses}`}
+                    />
+                );
+            })}
+        </div>
+    )
+}
+
+export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, QuestionLongOptions };

@@ -1,5 +1,9 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import Fitbq from './Fillintheblank.jsx' 
+import Defmcq from './Defmcq.jsx'
+import Imageq from './Imageqs'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -12,6 +16,7 @@ import Rush from './pages/Rush.jsx'
 import SentenceSelect from './pages/questions/SentenceSelect';
 import GameOver from './pages/GameOver'
 import PointsProvider from './context/Points'
+import ImageSelect from './pages/questions/ImageSelect.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +39,12 @@ const router = createBrowserRouter([
   }, {
     path: "/sentence-select",
     element: <SentenceSelect />
+  }, {
+    path: "/gameover",
+    element: <GameOver />
+  }, {
+    path: "/image-select",
+    element: <ImageSelect />
   }
 ]);
 
