@@ -1,8 +1,7 @@
 import { Heart } from "./components"
 import { useState } from "react";
-import FillTheBlank from "./questions/FillTheBlank";
-import MultipleChoice from "./questions/MultipleChoice";
-import ImageSelect from "./questions/ImageSelect";
+import FillTheBlank from "./questions/FillTheBlank"
+import ImageSelect from "./questions/ImageSelect"
 import { DisplayPoints } from "./questions/components";
 import getRandomQuestionType from "./Randomiser";
 

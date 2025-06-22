@@ -57,6 +57,25 @@ function ImageSelect() {
           <div></div>
         </div>
         <QuestionQuestion question="Select the correct image:" />
+        
+        {/* Test if vite.svg loads */}
+        <div className="mb-4 p-4 bg-white rounded-lg">
+          <h3 className="text-lg font-bold mb-2">Testing static assets:</h3>
+          <img 
+            src="/vite.svg" 
+            alt="Vite Logo" 
+            className="w-16 h-16 border-2 border-gray-300"
+            onError={(e) => {
+              console.error("Vite.svg failed to load");
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }}
+          />
+          <div style={{display: 'none'}} className="w-16 h-16 bg-red-200 flex items-center justify-center text-red-600 text-xs">
+            Vite.svg failed
+          </div>
+        </div>
+
         <div className="flex flex-wrap items-center justify-center gap-6 my-8">
           {options.map((option) => {
             const stateClasses = showFeedback
