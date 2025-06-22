@@ -21,10 +21,9 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 def generate_fillinblank():
     response = client.models.generate_content(
         model="gemini-2.0-flash",
-        contents="Write one grammatically correct sentence with clear meaning." \
-        "Use at most one word from 2024–2025 brainrot language, internet slang," \
+        contents="Write one grammatically correct sentence that correctly uses one word from 2024–2025 brainrot language, internet slang," \
         "pop culture references, or TikTok comment sections. The sentence should be" \
-        "between 15 to 20 words, focused and without emojis. Do NOT use the word 'era'." \
+        "between 15 to 20 words, focused and without emojis. DO NOT start the sentence with despite. Do NOT use the word 'era'." \
         "Replace exactly one slang word in the sentence with a blank represented by five underscores (_____)." \
         "Provide 5 multiple choice options for that blank: 1 correct answer (the replaced word) and 4 plausible but not too similar" \
         "slang distractors. Return the result in this exact JSON format: { sentence: ..., choices: [...], answer: ... }",
@@ -48,7 +47,7 @@ def generate_definitionmc():
         "or any words already widely known. Think harder than you usually do. Give the **standard English definition**" \
         "of the chosen slang word, along with two **plausible but incorrect distractors** (that sound related but aren't accurate definitions)." \
         "Return the result in this EXACT JSON format:" \
-        "{ word: ..., choices: [..., ..., ...], answer: ... }",
+        "{ word: ..., choices: [..., ..., ...], answer: ...(as the correct string from choices) }",
         config={
         "response_mime_type": "application/json",
         "temperature": 0.7,

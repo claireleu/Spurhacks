@@ -117,39 +117,47 @@ const DisplayPoints = () => {
         </div>
     )
 }
-
 const FeedbackBanner = ({ isCorrect, handleContinue, correctAnswer }) => (
-    <div
-        className={`fixed bottom-0 left-0 w-full p-6 text-white ${isCorrect ? "bg-[#d7ffb8]" : "bg-[#ffdfe0]"
-            }`}
-    >
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-4">
-                <div
-                    className={`w-10 h-10 flex items-center justify-center bg-white rounded-full text-3xl font-bold ${isCorrect ? "text-green-500" : "text-red-500"
-                        }`}
-                >
-                    {isCorrect ? "✓" : "✗"}
-                </div>
-            </div>
+  <div
+    className={`fixed bottom-0 left-0 w-full p-6 text-white ${
+      isCorrect ? "bg-[#d7ffb8]" : "bg-[#ffdfe0]"
+    }`}
+  >
+    <div className="max-w-4xl mx-auto flex items-center justify-between gap-6">
+      <div
+        className={`w-10 h-10 flex items-center justify-center bg-white rounded-full text-3xl font-bold ${
+          isCorrect ? "text-green-500" : "text-red-500"
+        }`}
+      >
+        {isCorrect ? "✓" : "✗"}
+      </div>
 
-            <div className="flex-1 text-center font-semibold text-lg text-gray-800">
-                The correct answer was <span className="font-bold">{correctAnswer}</span>
-            </div>
+      <div className="flex-1 font-semibold text-lg text-gray-800 text-left">
+        {isCorrect
+          ? "Correct!"
+          : (
+            <>
+              Incorrect! The correct answer was{" "}
+              <span className="font-bold">{correctAnswer}</span>
+            </>
+          )
+        }
+      </div>
 
-            <button
-                onClick={handleContinue}
-                className={`px-6 py-2 rounded-xl text-lg font-bold transition-colors duration-200 shadow-md
-                    ${isCorrect
-                        ? "bg-green-400 hover:bg-green-500 text-white"
-                        : "bg-red-400 hover:bg-red-500 text-white"
-                    }`}
-            >
-                CONTINUE
-            </button>
-        </div>
-    </div >
+      <button
+        onClick={handleContinue}
+        className={`px-6 py-2 rounded-xl text-lg font-bold transition-colors duration-200 shadow-md ${
+          isCorrect
+            ? "bg-green-400 hover:bg-green-500 text-white"
+            : "bg-red-400 hover:bg-red-500 text-white"
+        }`}
+      >
+        CONTINUE
+      </button>
+    </div>
+  </div>
 );
+
 
 const QuestionLongOptions = ({ answers, selectedAnswer, handleWordClick, showFeedback, isCorrect }) => {
 
