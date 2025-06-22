@@ -33,20 +33,27 @@ const router = createBrowserRouter([
   }, {
     path: "/endurance",
     element: <Endurance />
-  },{
-    path: "/fill-the-blank",
-    element: <FillTheBlank />
   }, {
     path: "/rush",
     element: <Rush />
+  }, {
+    path: "/gameover",
+    element: <GameOver />
+  },
+  // Testing
+  {
+    path: "/fill-the-blank",
+    element: <FillTheBlank />
   }, {
     path: "/sentence-select",
     element: <SentenceSelect />
   }, {
     path: "/gameover",
     element: <GameOver />
+  }, {
+    path: "/image-select",
+    element: <ImageSelect />
   }
-
 ]);
 
 createRoot(document.getElementById('root')).render(

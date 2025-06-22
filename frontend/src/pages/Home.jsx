@@ -2,6 +2,7 @@ import logo from "../assets/duoslango-logo.png";
 import bird from "../assets/duoslango.png";
 import { useNavigate } from "react-router-dom";
 import { BackgroundContainer } from "./components";
+import { usePoints } from "../context/Points";
 
 const HomeButton = ({ label, icon, to }) => {
   const navigate = useNavigate();
@@ -25,8 +26,13 @@ const HomeButton = ({ label, icon, to }) => {
 };
 
 function Home() {
+  const { highscore } = usePoints()
+
   return (
     <BackgroundContainer>
+      <div className="absolute top-5 right-5 font-Jersey-15 text-3xl text-white bg-black bg-opacity-30 px-4 py-2 rounded-lg">
+        Highscore: {highscore}
+      </div>
       <div className="relative w-[90vw] max-w-[700px] h-fit rounded-3xl border-4 border-white bg-gradient-to-b from-porsche-500 to-burnt-sienna-400 flex items-center p-8 shadow-lg">
         <img
           src={logo}
@@ -41,7 +47,7 @@ function Home() {
         />
       </div>
       <div className="flex flex-row mt-8 mb-8 gap-2">
-        <HomeButton label={"Start"} to="/fill-the-blank" />
+        <HomeButton label={"Endurance"} to="/endurance" />
         <HomeButton label={"Rush"} to="/rush"/>
       </div>
       <div className="py-3 px-5 rounded-2xl w-fit flex justify-center bg-amber-50">
