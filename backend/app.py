@@ -23,7 +23,7 @@ def generate_fillinblank():
         model="gemini-2.0-flash",
         contents="Write one sentence with meaning. Use at most 4 words from 2024–2025 brainrot language," \
         "internet slang, pop culture references, or TikTok comment sections. Keep the sentence between 15 - 25 words, with a clear focus and no emojis." \
-        "Then, replace one slang word with a blank in the form of five underscores (_____). Return 5 multiple choice options for that blank — 1 correct word being the one you replaced with the blank and" \
+        "Then, replace one slang word with a blank in the form of five underscores (_____).you can only replace ONE WORD. Return 5 multiple choice options for that blank — 1 correct word being the one you replaced with the blank and" \
         "4 plausible distractors. Return the result in this exact JSON format:{ sentence: ..., choices: [...], answer: ...}",
         config={
         "response_mime_type": "application/json",
@@ -40,10 +40,12 @@ def generate_definitionmc():
     print("Frontend hit the endpoint!")
     response = client.models.generate_content(
         model="gemini-2.0-flash",
-        contents="give me one brain rot slang word from internet culture, pop culture reference," \
-        "tiktok commen section, common recent acronyms like pmo. then give me the normal english translation" \
-        "of the slang word along with two distractors. Return the result in this exact" \
-        "JSON format:{ word: ..., choices: [...], answer: ...}",
+        contents="You are a Gen Z internet linguist. Pick ONE recent and **less common** slang word or acronym used in 2024–2025 internet"
+        "or pop culture (e.g., TikTok, Twitter, niche comment sections). Avoid mainstream or overused words like 'rizz', 'sus', 'delulu',"
+        "or any words already widely known. Give the **standard English definition**" \
+        "of the chosen slang word, along with two **plausible but incorrect distractors** (that sound related but aren't accurate definitions)." \
+        "Return the result in this EXACT JSON format:" \
+        "{ word: ..., choices: [..., ..., ...], answer: ... }",
         config={
         "response_mime_type": "application/json",
         "temperature": 0.5,
