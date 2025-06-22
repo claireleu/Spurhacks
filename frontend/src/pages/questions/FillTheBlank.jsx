@@ -6,7 +6,6 @@ function FillTheBlank({ hearts, setHearts }) {
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [showFeedback, setShowFeedback] = useState(false);
     const [questionData, setQuestionData] = useState(null);
-    const correctAnswer = questionData?.answer;
 
 
     useEffect(() => {
@@ -54,6 +53,7 @@ function FillTheBlank({ hearts, setHearts }) {
     };
 
     if (!questionData) return <p>Loading...</p>;
+    const correctAnswer = questionData.answer;
     const isCorrect = selectedAnswer === correctAnswer;
 
     return (
