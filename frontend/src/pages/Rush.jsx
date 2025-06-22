@@ -32,7 +32,6 @@ function Rush() {
 
   const props = {
     onContinue: handleContinue,
-    key: questionKey,
   };
 
   return (
@@ -41,9 +40,9 @@ function Rush() {
         {timeLeft}s
       </div>
       <DisplayPoints />
-      {questionType === "fill-in-the-blank" && <FillTheBlank {...props} />}
-      {questionType === "multiple-choice" && <MultipleChoice {...props} />}
-      {questionType === "image" && <ImageSelect {...props} />}
+      {questionType === "fill-in-the-blank" && <FillTheBlank key={questionKey} {...props} />}
+      {questionType === "multiple-choice" && <MultipleChoice key={questionKey} {...props} />}
+      {questionType === "image" && <ImageSelect key={questionKey} {...props} />}
     </div>
   );
 }

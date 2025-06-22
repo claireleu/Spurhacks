@@ -9,7 +9,7 @@ import { useMode } from "../context/useContext";
 
 function Endurance() {
   const [hearts, setHearts] = useState(3)
-  const [setQuestionKey] = useState(0);
+  const [questionKey, setQuestionKey] = useState(0);
   const [questionType, setQuestionType] = useState(() => getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
   const { setMode } = useMode()
 
@@ -28,15 +28,14 @@ function Endurance() {
       hearts,
       setHearts,
       onContinue: handleContinue,
-      /*key: questionKey,*/
     };
 
     if (questionType === "fill-in-the-blank") {
-      return <FillTheBlank {...props} />;
+      return <FillTheBlank key={questionKey} {...props} />;
     } else if (questionType === "multiple-choice") {
-      return <MultipleChoice {...props} />;
+      return <MultipleChoice key={questionKey} {...props} />;
     } else if (questionType === "image") {
-      return <ImageSelect {...props} />;
+      return <ImageSelect key={questionKey} {...props} />;
     }
   };
 

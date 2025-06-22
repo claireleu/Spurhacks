@@ -19,13 +19,6 @@ function FillTheBlank({ onContinue }) {
                 setQuestionData(data);
             })
             .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
-        fetch("http://127.0.0.1:5000/generate-fill-in-blank")
-            .then((res) => res.json())
-            .then((data) => {
-                console.log("Got response:", data);
-                setQuestionData(data);
-            })
-            .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
     }, []);
 
     const handleWordClick = (word) => { // clicking on a word before you submit 
@@ -51,7 +44,6 @@ function FillTheBlank({ onContinue }) {
     const handleContinue = () => {
         setSelectedAnswer(null);
         setShowFeedback(false);
-        onContinue();
         onContinue();
     };
 
@@ -97,9 +89,6 @@ function FillTheBlank({ onContinue }) {
             </QuestionContent>
             <div className="relative w-full" style={{ height: "125px" }}>
                 <QuestionCheck
-                    showFeedback={showFeedback}
-                    handleCheck={handleCheck}
-                    selectedAnswer={selectedAnswer}
                     showFeedback={showFeedback}
                     handleCheck={handleCheck}
                     selectedAnswer={selectedAnswer}
