@@ -53,23 +53,26 @@ const QuestionAnswers = ({ answers, selectedAnswer, handleWordClick, showFeedbac
     return (
         <div className="flex flex-wrap items-center justify-center gap-4 my-8">
             {answers.map((answer) => {
-                let stateClasses = "bg-gray-500";
+                let stateClasses =
+                    "bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 transition duration-200 rounded-xl";
+
                 if (showFeedback) {
                     if (isCorrect) {
                         stateClasses =
                             answer === selectedAnswer
-                                ? "bg-green-600"
-                                : "bg-red-600 text-gray-400";
+                                ? "bg-green-400 text-gray-900 border-green-500"
+                                : "bg-red-100 text-gray-500 border-red-300";
                     } else {
                         if (answer === selectedAnswer) {
-                            stateClasses = "bg-gray-500";
+                            stateClasses = "bg-gray-300 text-gray-800 border-gray-400";
                         } else {
-                            stateClasses = "bg-gray-500 text-gray-400";
+                            stateClasses = "bg-gray-100 text-gray-400 border-gray-200";
                         }
                     }
                 } else if (answer === selectedAnswer) {
-                    stateClasses = "bg-gray-800";
+                    stateClasses = "bg-blue-200 text-gray-900 border-blue-300";
                 }
+
 
                 return (
                     <Word
@@ -115,7 +118,7 @@ const DisplayPoints = () => {
     )
 }
 
-const FeedbackBanner = ({ isCorrect, handleContinue, correctAnswer}) => (
+const FeedbackBanner = ({ isCorrect, handleContinue, correctAnswer }) => (
     <div
         className={`fixed bottom-0 left-0 w-full p-6 text-white ${isCorrect ? "bg-[#d7ffb8]" : "bg-[#ffdfe0]"
             }`}
@@ -129,16 +132,17 @@ const FeedbackBanner = ({ isCorrect, handleContinue, correctAnswer}) => (
                     {isCorrect ? "✓" : "✗"}
                 </div>
             </div>
-         
+
             <div className="flex-1 text-center font-semibold text-lg text-gray-800">
                 The correct answer was <span className="font-bold">{correctAnswer}</span>
             </div>
 
             <button
                 onClick={handleContinue}
-                className={`px-8 py-3 rounded-lg text-xl font-bold ${isCorrect
-                    ? "bg-green-500 text-green-600"
-                    : "bg-red-500 text-red-600"
+                className={`px-6 py-2 rounded-xl text-lg font-bold transition-colors duration-200 shadow-md
+                    ${isCorrect
+                        ? "bg-green-400 hover:bg-green-500 text-white"
+                        : "bg-red-400 hover:bg-red-500 text-white"
                     }`}
             >
                 CONTINUE
@@ -243,4 +247,4 @@ const QuestionImages = ({ answers, selectedAnswer, handleWordClick, showFeedback
 };
 
 
-export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionText, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions, QuestionImages};
+export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionText, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions, QuestionImages };

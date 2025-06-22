@@ -2,19 +2,19 @@ import amongus from "../../assets/amongus.png";
 import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
 import React, { useState, useEffect } from "react";
 
-function FillTheBlank({ hearts, setHearts, onContinue}) {
+function FillTheBlank({ hearts, setHearts, onContinue }) {
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [showFeedback, setShowFeedback] = useState(false);
     const [questionData, setQuestionData] = useState(null);
 
     useEffect(() => {
-    fetch("http://127.0.0.1:5000/generate-fill-in-blank")
-      .then((res) => res.json())
-      .then((data) => {
-      console.log("Got response:", data); 
-      setQuestionData(data);
-      })
-      .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
+        fetch("http://127.0.0.1:5000/generate-fill-in-blank")
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("Got response:", data);
+                setQuestionData(data);
+            })
+            .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
     }, []);
 
     const handleWordClick = (word) => { // clicking on a word before you submit 
@@ -33,16 +33,23 @@ function FillTheBlank({ hearts, setHearts, onContinue}) {
                 return;
             }
         }
-    setShowFeedback(true);
+        setShowFeedback(true);
     };
 
     const handleContinue = () => {
         setSelectedAnswer(null);
         setShowFeedback(false);
-        onContinue(); 
+        onContinue();
     };
 
-    if (!questionData) return <p>Loading...</p>;
+    if (!questionData) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <p className="text-gray-500 text-xl animate-pulse">Loading...</p>
+            </div>
+        );
+    }
+
     const correctAnswer = questionData.answer;
     const isCorrect = selectedAnswer === correctAnswer;
 
@@ -80,16 +87,16 @@ function FillTheBlank({ hearts, setHearts, onContinue}) {
 
             <div className="relative w-full" style={{ height: "125px" }}>
                 <QuestionCheck
-                showFeedback={showFeedback}
-                handleCheck={handleCheck}
-                selectedAnswer={selectedAnswer}
+                    showFeedback={showFeedback}
+                    handleCheck={handleCheck}
+                    selectedAnswer={selectedAnswer}
                 />
                 {showFeedback && (
-                <FeedbackBanner
-                    isCorrect={isCorrect}
-                    handleContinue={handleContinue}
-                    correctAnswer={correctAnswer}
-                />
+                    <FeedbackBanner
+                        isCorrect={isCorrect}
+                        handleContinue={handleContinue}
+                        correctAnswer={correctAnswer}
+                    />
                 )}
             </div>
         </QuestionBackground>
