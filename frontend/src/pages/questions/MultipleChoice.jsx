@@ -47,7 +47,14 @@ function MultipleChoice({ onContinue}) {
   };
 
 
-  if (!questionData) return <p>Loading...</p>;
+  if (!questionData) {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <p className="text-gray-500 text-xl animate-pulse">Loading...</p>
+    </div>
+  );
+}
+
   const correctAnswer = questionData.answer;
   const isCorrect = selectedAnswer === correctAnswer;
 

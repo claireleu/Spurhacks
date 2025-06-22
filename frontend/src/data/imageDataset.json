@@ -70,6 +70,11 @@
     "label": "Oiiaioiiiiai"
   },
   {
+    "id": 15,
+    "image": "/questionimages/shimpanzini_bananini.png",
+    "label": "Shimpanzini Bananini"
+  },
+  {
     "id": 16,
     "image": "/questionimages/skibidi_toilet.png",
     "label": "Skibidi Toilet"
@@ -98,5 +103,20 @@
     "id": 21,
     "image": "/questionimages/yeet.png",
     "label": "Yeeting"
+  },
+  {
+    "id": 22,
+    "image": "/questionimages/pen_pineapple_apple_pen.png",
+    "label": "Pen Pineapple Apple Pen"
+  },
+  {
+    "id": 23,
+    "image": "/questionimages/lit.png",
+    "label": "Lit"
+  },
+  {
+    "id": 24,
+    "image": "/questionimages/gnarly.png",
+    "label": "Gnarly"
   }
 ]

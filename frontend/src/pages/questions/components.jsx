@@ -38,51 +38,54 @@ const QuestionText = ({ question }) => (
 
 const QuestionAnswers = ({ answers, selectedAnswer, handleWordClick, showFeedback, isCorrect }) => {
 
-    const Word = ({ className, divClassName, state, text, onClick, disabled }) => {
-        return (
-            <div
-                onClick={!disabled ? onClick : undefined}
-                className={`${className} ${divClassName} ${state} rounded-lg hover:scale-105 ring-2 px-4 py-2 shadow-md ${disabled ? "cursor-not-allowed" : "cursor-pointer"
-                    }`}
-            >
-                {text}
-            </div>
-        );
-    }
-
+   const Word = ({ className, divClassName, state, text, onClick, disabled }) => {
     return (
-        <div className="flex flex-wrap items-center justify-center gap-4 my-8">
-            {answers.map((answer) => {
-                let stateClasses = "bg-gray-500";
-                if (showFeedback) {
-                    if (isCorrect) {
-                        stateClasses =
-                            answer === selectedAnswer
-                                ? "bg-green-600"
-                                : "bg-red-600 text-gray-400";
-                    } else {
-                        if (answer === selectedAnswer) {
-                            stateClasses = "bg-gray-500";
-                        } else {
-                            stateClasses = "bg-gray-500 text-gray-400";
-                        }
-                    }
-                } else if (answer === selectedAnswer) {
-                    stateClasses = "bg-gray-800";
-                }
-
-                return (
-                    <Word
-                        key={answer}
-                        text={answer}
-                        onClick={() => handleWordClick(answer)}
-                        disabled={showFeedback}
-                        divClassName={`text-2xl md:text-3xl font-Jersey-15 px-6 py-2 rounded-lg transition-all duration-200 ${stateClasses}`}
-                    />
-                );
-            })}
+        <div
+            onClick={!disabled ? onClick : undefined}
+            className={`${className} ${divClassName} ${state} rounded-lg hover:scale-105 ring-1 px-4 py-2 shadow-sm ${disabled ? "cursor-not-allowed" : "cursor-pointer"
+                }`}
+        >
+            {text}
         </div>
-    )
+    );
+}
+
+return (
+    <div className="flex flex-wrap items-center justify-center gap-4 my-8">
+        {answers.map((answer) => {
+            let stateClasses =
+                "bg-gray-100 text-gray-800 border border-gray-300 hover:bg-gray-200 transition duration-200 rounded-xl";
+
+            if (showFeedback) {
+                if (isCorrect) {
+                    stateClasses =
+                        answer === selectedAnswer
+                            ? "bg-green-100 text-green-800 border-green-300"
+                            : "bg-gray-100 text-gray-500 border-gray-200";
+                } else {
+                    if (answer === selectedAnswer) {
+                        stateClasses = "bg-red-100 text-red-700 border-red-300";
+                    } else {
+                        stateClasses = "bg-gray-100 text-gray-400 border-gray-200";
+                    }
+                }
+            } else if (answer === selectedAnswer) {
+                stateClasses = "bg-gray-200 text-gray-900 border-gray-400";
+            }
+
+            return (
+                <Word
+                    key={answer}
+                    text={answer}
+                    onClick={() => handleWordClick(answer)}
+                    disabled={showFeedback}
+                    divClassName={`text-2xl md:text-3xl font-Jersey-15 px-6 py-2 rounded-lg transition-all duration-200 ${stateClasses}`}
+                />
+            );
+        })}
+    </div>
+)
+
 }
 
 const QuestionCheck = ({ showFeedback, handleCheck, selectedAnswer }) => {
@@ -115,7 +118,7 @@ const DisplayPoints = () => {
     )
 }
 
-const FeedbackBanner = ({ isCorrect, handleContinue, correctAnswer}) => (
+const FeedbackBanner = ({ isCorrect, handleContinue, correctAnswer }) => (
     <div
         className={`fixed bottom-0 left-0 w-full p-6 text-white ${isCorrect ? "bg-[#d7ffb8]" : "bg-[#ffdfe0]"
             }`}
@@ -129,16 +132,17 @@ const FeedbackBanner = ({ isCorrect, handleContinue, correctAnswer}) => (
                     {isCorrect ? "✓" : "✗"}
                 </div>
             </div>
-         
+
             <div className="flex-1 text-center font-semibold text-lg text-gray-800">
                 The correct answer was <span className="font-bold">{correctAnswer}</span>
             </div>
 
             <button
                 onClick={handleContinue}
-                className={`px-8 py-3 rounded-lg text-xl font-bold ${isCorrect
-                    ? "bg-green-500 text-green-600"
-                    : "bg-red-500 text-red-600"
+                className={`px-6 py-2 rounded-xl text-lg font-bold transition-colors duration-200 shadow-md
+                    ${isCorrect
+                        ? "bg-green-400 hover:bg-green-500 text-white"
+                        : "bg-red-400 hover:bg-red-500 text-white"
                     }`}
             >
                 CONTINUE
@@ -243,4 +247,4 @@ const QuestionImages = ({ answers, selectedAnswer, handleWordClick, showFeedback
 };
 
 
-export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionText, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions, QuestionImages};
+export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionText, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions, QuestionImages };
