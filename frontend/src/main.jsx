@@ -9,7 +9,6 @@ import {
 } from 'react-router-dom'
 
 // 3. Global CSS
-import './index.css'
 import './root.css'
 
 // 4. API-backed question widgets
