@@ -44,7 +44,7 @@ function Home() {
         <img
           src={logo}
           alt="Duoslango logo"
-          className="min-h-30 md:min-h-40 lg:min-h-60 w-auto object-contain pt-10 px-8 z-10"
+          className="min-h-20 md:min-h-10 lg:min-h-10 w-auto object-contain pt-10 px-8 z-10"
         />
         <img
           src={bird}
