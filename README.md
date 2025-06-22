@@ -57,16 +57,19 @@ Duoslango is an educational and entertaining web app designed to teach modern in
    # Windows (PowerShell)
    python -m venv venv
    .\venv\Scripts\Activate.ps1
+   ```
    
 3. Install required packages:
 
    ```bash
    pip install flask flask-cors python-dotenv google
+   ```
 
 4. Run the Flask backend:
 
   ```bash
   python app.py
+ ```
 
 ### Frontend (React + Vite)
 
@@ -75,14 +78,17 @@ Duoslango is an educational and entertaining web app designed to teach modern in
 
    ```bash
    npm install
+   ```
 3. Install TailwindCSS plugin for Vite:
 
    ```bash
    npm install tailwindcss @tailwindcss/vite
+   ```
 4. Start the development server:
 
    ```bash
    npm run dev
+   ```
 
 ## Usage
 
