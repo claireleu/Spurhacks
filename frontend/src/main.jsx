@@ -7,7 +7,8 @@ import {
 import './root.css';
 import Home from './pages/Home';
 import FillTheBlank from './pages/questions/FillTheBlank';
-import Rush from './pages/Rush'
+import Endurance from './pages/Endurance.jsx'
+import Rush from './pages/Rush.jsx'
 import SentenceSelect from './SentenceSelect.jsx';
 import GameOver from './pages/GameOver'
 
@@ -16,6 +17,9 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />
   }, {
+    path: "/endurance",
+    element: <Endurance />
+  },{
     path: "/fill-the-blank",
     element: <FillTheBlank />
   }, {

@@ -14,14 +14,14 @@ function FillTheBlank({ hearts, setHearts }) {
     };
 
     const handleCheck = () => {
-        if (selectedAnswer) {
+        if (selectedAnswer && setHearts) {
             setHearts(prev => prev - 1);
             if (hearts === 1) {
                 setTimeout(() => window.location.href = "/gameover", 100);
                 return;
             } 
-            setShowFeedback(true);
         }
+        setShowFeedback(true);
     };
 
     const handleContinue = () => {
@@ -37,7 +37,7 @@ function FillTheBlank({ hearts, setHearts }) {
                 <div className="w-full flex justify-between items-center px-4 py-2">
                     <button
                         onClick={() => (window.location.href = "/")}
-                        className="[font-Jersey-15 font-normal text-gray-400 text-5xl cursor-pointer"
+                        className="font-Jersey-15 font-normal text-gray-400 text-5xl cursor-pointer"
                     >
                         X
                     </button>
