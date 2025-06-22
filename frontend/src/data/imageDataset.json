@@ -1,14 +1,54 @@
 [
   {
-    "image": "../../public/questionimages/bombardino_crocodilo.jpg",
-    "label": "Bombardino Crocodilo"
+    "image": "../../public/questionimages/bombardiro_crocodilo.jpg",
+    "label": "Bombardiro Crocodilo"
   },
   {
-    "image": "./questionimages/yeet.png",
-    "label": "Yeeting"
+    "image": "../../public/questionimages/br_br_patapim.png",
+    "label": "Br Br Patapim"
   },
   {
-    "image": "questionimages/lmao.jpg",
+    "image": "../../public/questionimages/its_not_clocking.png",
+    "label": "It's Not Clocking to You"
+  },
+  {
+    "image": "../../public/questionimages/john_pork.png",
+    "label": "John Pork"
+  },
+  {
+    "image": "../../public/questionimages/lirili_larila.png",
+    "label": "Lirili Larila"
+  },
+  {
+    "image": "../../public/questionimages/lmao.jpg",
     "label": "LMAO"
+  },
+  {
+    "image": "../../public/questionimages/shimpanzini_bananini.png",
+    "label": "Shimpanzini Bananini"
+  },
+  {
+    "image": "../../public/questionimages/skibidi_toilet.png",
+    "label": "Skibidi Toilet"
+  },
+  {
+    "image": "../../public/questionimages/tim_cheese.png",
+    "label": "Tim Cheese"
+  },
+  {
+    "image": "../../public/questionimages/tralalero_tralala.png",
+    "label": "Tralalero Tralala"
+  },
+  {
+    "image": "../../public/questionimages/trippi_troppi.png",
+    "label": "Trippi Troppi"
+  },
+  {
+    "image": "../../public/questionimages/tung_tung_tung_sahur.png",
+    "label": "Tung Tung Tung Sahur"
+  },
+  {
+    "image": "../../public/questionimages/yeet.png",
+    "label": "Yeeting"
   }
 ]
