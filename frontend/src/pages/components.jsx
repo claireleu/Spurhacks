@@ -12,7 +12,7 @@ const BackgroundContainer = ({ children }) => {
 
 const Heart = ({ className, filled = false, pulse = false }) => {
     return (
-        <div className={`hover:scale-103 transition-all ${className} ${pulse && "animate-pulse duration-1000 ease-in-out"}`}>
+        <div className={`hover:scale-103 transition-all w-16 h-16 ${className} ${pulse && "animate-pulse duration-1000 ease-in-out"}`}>
             <img 
                 src={heartImg} 
                 alt="heart" 
