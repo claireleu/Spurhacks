@@ -20,8 +20,7 @@ import FillTheBlank    from './pages/questions/FillTheBlank'
 import ImageSelect     from './pages/questions/ImageSelect'
 import GameOver        from './pages/GameOver'
 import MultipleChoice  from './pages/questions/MultipleChoice';
-
-import PointsProvider from './context/Points'
+import Providers from './context/Providers'
 
 
 const router = createBrowserRouter([
@@ -56,8 +55,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <PointsProvider>
+    <Providers>
       <RouterProvider router={router} />
-    </PointsProvider>
+    </Providers>
   </StrictMode>
 )

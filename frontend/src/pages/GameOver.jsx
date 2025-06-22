@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { BackgroundContainer } from './components';
 import { Heart } from './components';
+import { usePoints } from '../context/useContext'
 
 const GameOverButton = ({ label, icon, to }) => {
   const navigate = useNavigate();
@@ -24,11 +25,13 @@ const GameOverButton = ({ label, icon, to }) => {
 };
 
 function GameOver() {
+  const { points } = usePoints()
+
   return (
     <BackgroundContainer>
       <div className="flex flex-col justify-center items-center relative w-[90vw] max-w-[700px] h-fit rounded-3xl border-4 border-white bg-radial from-muddy-waters-500 to-cape-palliser-600 p-8 gap-5 shadow-lg">
         <h1 className="text-white text-center w-full font-Jersey-15 text-7xl">Lesson Over</h1>
-        <h2 className="text-white text-center w-full font-Jersey-15 text-3xl">Questions Answered</h2>
+        <h2 className="text-white text-center w-full font-Jersey-15 text-3xl">Questions Answered: {points}</h2>
         <div className='flex flex-row h-1/3 w-1/2 gap-3'>
           <Heart />
           <Heart className="scale-120" />
