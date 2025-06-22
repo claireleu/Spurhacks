@@ -1,6 +1,9 @@
-import { BackgroundContainer, Heart } from "./components"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import FillTheBlank from "./questions/FillTheBlank"
+import MultipleChoice from "./questions/MultipleChoice";
+import ImageSelect from "./questions/ImageSelect";
+import getRandomQuestionType from "./Randomiser";
+import { DisplayPoints } from "./questions/components";
 
 function Rush() {
     const [timeLeft, setTimeLeft] = useState(60);
@@ -14,12 +17,18 @@ function Rush() {
         }
     }, [timeLeft]);
 
+    const currentQuestionTypes = ["fill-in-the-blank", "multiple-choice", "image"]
+    const randomQuestionType = useMemo(() => getRandomQuestionType(currentQuestionTypes), [])
+
     return (
         <div className="flex flex-col items-center justify-center">
             <div className="absolute top-5 right-5 text-4xl font-Jersey-15 text-black">
                 {timeLeft}s
             </div>
-            <FillTheBlank />
+            <DisplayPoints />
+            {randomQuestionType === "fill-in-the-blank" && <FillTheBlank />}
+            {randomQuestionType === "multiple-choice" && <MultipleChoice />}
+            {randomQuestionType === "image" && <ImageSelect />}
         </div>
     )
 }
