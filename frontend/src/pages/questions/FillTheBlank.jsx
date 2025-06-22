@@ -19,7 +19,7 @@ function FillTheBlank({ hearts, setHearts }) {
             if (hearts === 1) {
                 setTimeout(() => window.location.href = "/gameover", 100);
                 return;
-            } 
+            }
         }
         setShowFeedback(true);
     };
@@ -32,7 +32,7 @@ function FillTheBlank({ hearts, setHearts }) {
     const isCorrect = selectedAnswer === correctAnswer;
 
     return (
-        <QuestionBackground>
+        <>
             <DisplayPoints />
             <QuestionContent>
                 <div className="w-full flex justify-between items-center px-4 py-2">
@@ -64,7 +64,7 @@ function FillTheBlank({ hearts, setHearts }) {
                 />
                 {showFeedback && <FeedbackBanner isCorrect={isCorrect} handleContinue={handleContinue} />}
             </div>
-        </QuestionBackground>
+        </>
     );
 }
 
