@@ -1,9 +1,10 @@
 import { Heart } from "./components"
 import { useState } from "react";
-import FillTheBlank from "./questions/FillTheBlank"
-import SentenceSelect from "./questions/SentenceSelect";
+import FillTheBlank from "./questions/FillTheBlank";
+import MultipleChoice from "./questions/MultipleChoice";
+import ImageSelect from "./questions/ImageSelect";
 import { DisplayPoints } from "./questions/components";
-import { getRandomQuestionType } from "./questionUtils";
+import getRandomQuestionType from "./Randomiser";
 
 function Endurance() {
     const [hearts, setHearts] = useState(3)
@@ -19,8 +20,8 @@ function Endurance() {
             </div>
             <DisplayPoints />
             {randomQuestionType === "fill-in-the-blank" && <FillTheBlank hearts={hearts} setHearts={setHearts} />}
-            {randomQuestionType === "multiple-choice" && <ImageSelect />}
-            {randomQuestionType === "image" && <SentenceSelect />}
+            {randomQuestionType === "multiple-choice" && <MultipleChoice />}
+            {randomQuestionType === "image" && <ImageSelect />}
         </div>
     )
 }
