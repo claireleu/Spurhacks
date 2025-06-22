@@ -21,7 +21,7 @@ import Home from './pages/Home'
 import Endurance from './pages/Endurance.jsx'
 import Rush from './pages/Rush.jsx'
 import FillTheBlank from './pages/questions/FillTheBlank'
-import SentenceSelect from './pages/questions/SentenceSelect.jsx'
+import SentenceSelect from './pages/questions/MultipleChoice.jsx'
 import GameOver from './pages/GameOver'
 
 import PointsProvider from './context/Points'

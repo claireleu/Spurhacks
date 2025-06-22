@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
 import FillTheBlank from "./questions/FillTheBlank"
-import SentenceSelect from "./questions/SentenceSelect";
-import ImageSelect from "./questions/ImageSelect"
-import getRandomQuestionType from "../utils/questionUtils";
+import MultipleChoice from "./questions/MultipleChoice";
+import ImageSelect from "./questions/ImageSelect";
+import getRandomQuestionType from "./Randomiser";
 import { DisplayPoints } from "./questions/components";
 
 function Rush() {
@@ -27,8 +27,8 @@ function Rush() {
             </div>
             <DisplayPoints />
             {randomQuestionType === "fill-in-the-blank" && <FillTheBlank />}
-            {randomQuestionType === "multiple-choice" && <ImageSelect />}
-            {randomQuestionType === "image" && <SentenceSelect />}
+            {randomQuestionType === "multiple-choice" && <MultipleChoice />}
+            {randomQuestionType === "image" && <ImageSelect />}
         </div>
     )
 }
