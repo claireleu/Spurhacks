@@ -11,12 +11,10 @@ function MultipleChoice({ hearts, setHearts, onContinue}) {
   useEffect(() => {
   fetch("http://127.0.0.1:5000/generate-definition-mc")
     .then((res) => res.json())
-  
     .then((data) => {
     console.log("Got response:", data); 
     setQuestionData(data);
     })
-      
     .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
 
   }, []);

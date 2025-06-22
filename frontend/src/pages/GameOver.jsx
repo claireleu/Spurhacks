@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { BackgroundContainer } from './components';
 import { Heart } from './components';
-import { usePoints } from '../context/useContext'
+import { useMode, usePoints } from '../context/useContext'
 
 const GameOverButton = ({ label, icon, to }) => {
   const navigate = useNavigate();
@@ -26,6 +26,7 @@ const GameOverButton = ({ label, icon, to }) => {
 
 function GameOver() {
   const { points } = usePoints()
+  const { mode } = useMode()
 
   return (
     <BackgroundContainer>
@@ -39,7 +40,7 @@ function GameOver() {
         </div>
       </div>
       <div className="flex flex-row mt-8 mb-8 gap-2">
-        <GameOverButton label={"Try Again"} to="/" />
+        <GameOverButton label={"Try Again"} to={`/${mode}`} />
         <GameOverButton label={"Quit"} to="/" />
       </div>
     </BackgroundContainer>

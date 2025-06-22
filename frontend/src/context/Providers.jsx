@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react"
-import { PointsContext, HeartsContext } from "./Context";
+import { useState, useCallback, useEffect } from "react"
+import { PointsContext, HeartsContext, ModeContext } from "./Context";
 
 const PointsProvider = ({ children }) => {
     const [highscore, setHighScore] = useState(0)
@@ -52,11 +52,35 @@ const HeartsProvider = ({ children }) => {
     )
 }
 
+const ModeProvider = ({ children }) => {
+    const [mode, setMode] = useState(() => {
+        // Initialize from localStorage if available, otherwise default to 'rush'
+        const savedMode = localStorage.getItem('gameMode');
+        return savedMode || 'rush';
+    });
+
+    useEffect(() => {
+        localStorage.setItem('gameMode', mode);
+    }, [mode]);
+
+    const value = {
+        mode,
+        setMode
+    }
+    return (
+        <ModeContext.Provider value={value}>
+            {children}
+        </ModeContext.Provider>
+    )
+}
+
 const Providers = ({ children }) => {
     return (
         <PointsProvider>
             <HeartsProvider>
-                {children}
+                <ModeProvider>
+                    {children}
+                </ModeProvider>
             </HeartsProvider>
         </PointsProvider>
     );

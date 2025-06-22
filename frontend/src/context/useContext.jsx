@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PointsContext, HeartsContext } from "./Context";
+import { PointsContext, HeartsContext, ModeContext } from "./Context";
 
 const usePoints = () => {
     const context = useContext(PointsContext);
@@ -17,4 +17,12 @@ const useHearts = () => {
     return context;
 };
 
-export { usePoints, useHearts }
+const useMode = () => {
+    const context = useContext(ModeContext);
+    if (!context) {
+        throw new Error("useOrders must be used in the OrdersProvider");
+    }
+    return context;
+};
+
+export { usePoints, useHearts, useMode }

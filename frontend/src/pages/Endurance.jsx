@@ -1,41 +1,48 @@
 import { Heart } from "./components"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FillTheBlank from "./questions/FillTheBlank"
 import ImageSelect from "./questions/ImageSelect"
 import MultipleChoice from "./questions/MultipleChoice"
 import { DisplayPoints } from "./questions/components";
 import getRandomQuestionType from "./Randomiser";
+import { useMode } from "../context/useContext";
 
 function Endurance() {
-    const [hearts, setHearts] = useState(3)
-    const [questionKey, setQuestionKey] = useState(0);
-    const [questionType, setQuestionType] = useState(() => getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
+  const [hearts, setHearts] = useState(3)
+  const [questionKey, setQuestionKey] = useState(0);
+  const [questionType, setQuestionType] = useState(() => getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
 
-    const handleContinue = () => {
-        setQuestionKey(prev => prev + 1);
-        setQuestionType(getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
+  const { setMode } = useMode()
+
+  useEffect(() => {
+    setMode("endurance")
+  }, [])
+
+  const handleContinue = () => {
+    setQuestionKey(prev => prev + 1);
+    setQuestionType(getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
+  };
+
+  const renderQuestion = () => {
+    const props = {
+      hearts,
+      setHearts,
+      onContinue: handleContinue,
+      /*key: questionKey,*/
     };
 
-    const renderQuestion = () => {
-        const props = {
-            hearts,
-            setHearts,
-            onContinue: handleContinue,
-            /*key: questionKey,*/
-        };
+    if (questionType === "fill-in-the-blank") {
+      return <FillTheBlank {...props} />;
+    } else if (questionType === "multiple-choice") {
+      return <MultipleChoice {...props} />;
+    } else if (questionType === "image") {
+      return <ImageSelect {...props} />;
+    }
+  };
 
-        if (questionType === "fill-in-the-blank") {
-        return <FillTheBlank {...props} />;
-        } else if (questionType === "multiple-choice") {
-        return <MultipleChoice {...props} />;
-        } else if (questionType === "image") {
-        return <ImageSelect {...props} />;
-        }
-    };
-
-     return (
-     <div className="flex flex-col items-center justify-center">
-     <div className="absolute top-5 right-5 flex flex-row gap-2 w-fit h-6">
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <div className="absolute top-5 right-5 flex flex-row gap-2 w-fit h-6">
         {Array.from({ length: 3 }, (_, i) => (
           <Heart key={i} filled={i < hearts} pulse={i === hearts - 1} />
         ))}
