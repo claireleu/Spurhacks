@@ -27,6 +27,15 @@ const QuestionQuestion = ({ image, question }) => {
     )
 }
 
+const QuestionText = ({ question }) => (
+    <div className="flex items-center justify-center my-8">
+        <span className="font-Jersey-15 font-normal text-[#3c3c3c] text-4xl sm:text-5xl md:text-6xl tracking-wide text-center">
+            {question}
+        </span>
+    </div>
+);
+
+
 const QuestionAnswers = ({ answers, selectedAnswer, handleWordClick, showFeedback, isCorrect }) => {
 
     const Word = ({ className, divClassName, state, text, onClick, disabled }) => {
@@ -187,4 +196,51 @@ const QuestionLongOptions = ({ answers, selectedAnswer, handleWordClick, showFee
     )
 }
 
-export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions };
+const QuestionImages = ({ answers, selectedAnswer, handleWordClick, showFeedback, isCorrect, imageDataset }) => {
+    return (
+        <div className="flex justify-between items-center space-x-4">
+            {answers.map((answer) => {
+                // Find the image URL that matches the answer
+                const imageUrl = imageDataset.find((img) => img.name === answer)?.link;
+
+                // Determine the state classes for styling
+                let stateClasses = "";
+                if (showFeedback) {
+                    if (isCorrect && answer === selectedAnswer) {
+                        stateClasses = "border-green-500";
+                    } else if (!isCorrect && answer === selectedAnswer) {
+                        stateClasses = "border-red-500";
+                    } else {
+                        stateClasses = "border-gray-300";
+                    }
+                } else if (answer === selectedAnswer) {
+                    stateClasses = "border-gray-500";
+                }
+
+                return (
+                    <div
+                        key={answer}
+                        className={`relative w-1/3 aspect-[2/3] border-4 rounded-lg overflow-hidden transition-all duration-200 ${stateClasses}`}
+                        onClick={() => !showFeedback && handleWordClick(answer)}
+                        style={{ cursor: showFeedback ? "not-allowed" : "pointer" }}
+                    >
+                        {imageUrl ? (
+                            <img
+                                src={imageUrl}
+                                alt={answer}
+                                className="w-full h-full object-cover object-center p-2"
+                            />
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500">
+                                No Image
+                            </div>
+                        )}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
+
+export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionText, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions, QuestionImages};
