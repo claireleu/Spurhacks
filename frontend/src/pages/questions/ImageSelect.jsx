@@ -34,7 +34,7 @@ function ImageSelect({ onContinue }) {
         return;
       }
     } else {
-      addPoints()
+      addPoints();
     }
     setShowFeedback(true);
   };
