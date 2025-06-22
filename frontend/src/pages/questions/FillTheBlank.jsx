@@ -98,6 +98,7 @@ function FillTheBlank({ hearts, setHearts }) {
                 <FeedbackBanner
                     isCorrect={isCorrect}
                     handleContinue={handleContinue}
+                    correctAnswer={correctAnswer}
                 />
                 )}
             </div>
