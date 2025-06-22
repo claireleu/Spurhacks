@@ -106,7 +106,7 @@ const DisplayPoints = () => {
     )
 }
 
-const FeedbackBanner = ({ isCorrect, handleContinue }) => (
+const FeedbackBanner = ({ isCorrect, handleContinue, correctAnswer}) => (
     <div
         className={`fixed bottom-0 left-0 w-full p-6 text-white ${isCorrect ? "bg-[#d7ffb8]" : "bg-[#ffdfe0]"
             }`}
@@ -120,11 +120,16 @@ const FeedbackBanner = ({ isCorrect, handleContinue }) => (
                     {isCorrect ? "✓" : "✗"}
                 </div>
             </div>
+         
+            <div className="flex-1 text-center font-semibold text-lg text-gray-800">
+                The correct answer was <span className="font-bold">{correctAnswer}</span>
+            </div>
+
             <button
                 onClick={handleContinue}
                 className={`px-8 py-3 rounded-lg text-xl font-bold ${isCorrect
-                    ? "bg-green-500 text-green"
-                    : "bg-red-500 text-red"
+                    ? "bg-green-500 text-green-600"
+                    : "bg-red-500 text-red-600"
                     }`}
             >
                 CONTINUE
