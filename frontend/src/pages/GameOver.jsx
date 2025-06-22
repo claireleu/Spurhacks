@@ -1,26 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import bird from '../assets/duoslango.png';
 import { BackgroundContainer } from './components';
-
-const Heart = () => {
-    return (
-        <div className='hover:scale-105 transition-all'>
-            <svg width="49" viewBox="0 0 98 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect y="14" width="14" height="28" fill="#D9D9D9" fill-opacity="0.8" />
-                <rect x="84" y="14" width="14" height="28" fill="#D9D9D9" fill-opacity="0.8" />
-                <rect x="84" width="14" height="28" transform="rotate(90 84 0)" fill="#D9D9D9" fill-opacity="0.8" />
-                <rect x="42" width="14" height="28" transform="rotate(90 42 0)" fill="#D9D9D9" fill-opacity="0.8" />
-                <rect x="14" y="42" width="14" height="14" fill="#D9D9D9" fill-opacity="0.8" />
-                <rect x="28" y="56" width="14" height="14" fill="#D9D9D9" fill-opacity="0.8" />
-                <rect x="70" y="42" width="14" height="14" fill="#D9D9D9" fill-opacity="0.8" />
-                <rect x="42" y="14" width="14" height="14" fill="#D9D9D9" fill-opacity="0.8" />
-                <rect x="56" y="56" width="14" height="14" fill="#D9D9D9" fill-opacity="0.8" />
-                <rect x="42" y="70" width="14" height="14" fill="#D9D9D9" fill-opacity="0.8" />
-            </svg>
-        </div>
-
-    )
-}
+import { Heart } from './components';
 
 const GameOverButton = ({ label, icon, to }) => {
     const navigate = useNavigate();

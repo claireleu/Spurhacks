@@ -2,7 +2,7 @@ import amongus from "../../assets/amongus.png";
 import React, { useState } from "react";
 import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner } from "./components"
 
-function FillTheBlank() {
+function FillTheBlank({ hearts, setHearts }) {
     const correctAnswer = "sigma";
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [showFeedback, setShowFeedback] = useState(false);
@@ -14,9 +14,14 @@ function FillTheBlank() {
     };
 
     const handleCheck = () => {
-        if (selectedAnswer) {
-            setShowFeedback(true);
+        if (selectedAnswer && setHearts) {
+            setHearts(prev => prev - 1);
+            if (hearts === 1) {
+                setTimeout(() => window.location.href = "/gameover", 100);
+                return;
+            } 
         }
+        setShowFeedback(true);
     };
 
     const handleContinue = () => {
@@ -32,7 +37,7 @@ function FillTheBlank() {
                 <div className="w-full flex justify-between items-center px-4 py-2">
                     <button
                         onClick={() => (window.location.href = "/")}
-                        className="[font-Jersey-15 font-normal text-gray-400 text-5xl cursor-pointer"
+                        className="font-Jersey-15 font-normal text-gray-400 text-5xl cursor-pointer"
                     >
                         X
                     </button>
@@ -51,7 +56,11 @@ function FillTheBlank() {
                 />
             </QuestionContent>
             <div className="relative w-full" style={{ height: "125px" }}>
-                <QuestionCheck showFeedback={showFeedback} handleCheck={handleCheck} selectedAnswer={selectedAnswer} />
+                <QuestionCheck
+                    showFeedback={showFeedback}
+                    handleCheck={handleCheck}
+                    selectedAnswer={selectedAnswer}
+                />
                 {showFeedback && <FeedbackBanner isCorrect={isCorrect} handleContinue={handleContinue} />}
             </div>
         </QuestionBackground>
