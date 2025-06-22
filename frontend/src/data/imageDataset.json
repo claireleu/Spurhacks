@@ -1,0 +1,14 @@
+[
+  {
+    "image": "../../public/questionimages/bombardino_crocodilo.jpg",
+    "label": "Bombardino Crocodilo"
+  },
+  {
+    "image": "./questionimages/yeet.png",
+    "label": "Yeeting"
+  },
+  {
+    "image": "questionimages/lmao.jpg",
+    "label": "LMAO"
+  }
+]
