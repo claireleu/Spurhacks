@@ -1,85 +1,101 @@
-import React from "react";
-import crying from "../../assets/crying.png";
+import { QuestionBackground, QuestionContent, QuestionText, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
+import React, { useState, useEffect } from "react";
 
-export const SentenceSelect = () => {
+function MultipleChoice({ hearts, setHearts }) {
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [questionData, setQuestionData] = useState(null);
+  const correctAnswer = questionData?.answer;
+
+
+  useEffect(() => {
+  fetch("http://127.0.0.1:5000/generate-definition-mc")
+    .then((res) => res.json())
+  
+    .then((data) => {
+    console.log("Got response:", data); 
+    setQuestionData(data);
+    })
+      
+    .catch((err) => console.error("Error fetching fill-in-the-blank:", err));
+
+  }, []);
+
+  const handleWordClick = (word) => { // clicking on a word before you submit 
+    if (!showFeedback) {
+      setSelectedAnswer(word);
+    }
+  };
+
+  const handleCheck = () => {
+    const correctAnswer = questionData?.answer;
+    const isCorrect = selectedAnswer === correctAnswer;
+    if (!isCorrect && setHearts) {
+      setHearts(prev => prev - 1);
+        if (hearts === 1) {
+          setTimeout(() => window.location.href = "/gameover", 100);
+          return;
+        }
+    }
+  setShowFeedback(true);
+  };
+
+  const handleContinue = () => { // click next buttom generates new question resets everything
+    setSelectedAnswer(null);
+    setShowFeedback(false);
+    fetch("http://127.0.0.1:5000/generate-definition-mc")
+    .then((res) => res.json())
+    .then((data) => {
+    console.log("Got response:", data); 
+    setQuestionData(data);
+    })
+    .catch((err) => console.error("Error fetching next question:", err));
+  };
+
+  if (!questionData) return <p>Loading...</p>;
+  const isCorrect = selectedAnswer === correctAnswer;
+
   return (
-    <div className="bg-[#fff4ec] flex flex-row justify-center w-full">
-      <div className="bg-[#fff4ec] w-[1440px] h-[1024px] relative">
+    <QuestionBackground>
+    <DisplayPoints />
+    <QuestionContent>
 
-        {/* Check Button */}
-        <div className="absolute w-[272px] h-[90px] top-[870px] left-[1080px]">
-          <div className="relative w-[270px] h-[90px] rounded-[30px]">
-            <div className="absolute w-[270px] h-[90px] top-0 left-0 rounded-[30px] bg-[linear-gradient(180deg,rgba(223,208,196,1)_100%)]" />
-            <div className="absolute w-[132px] top-[17px] left-[75px] font-Jersey-15 font-normal text-[#b69e92] text-[55px] tracking-[0] leading-[normal]">
-              CHECK
-            </div>
-          </div>
-        </div>
+    <div className="w-full flex justify-between items-center px-4 py-2">
+      <button
+        onClick={() => (window.location.href = "/")}
+          className="font-Jersey-15 font-normal text-gray-400 text-5xl cursor-pointer"
+      >
+      X
+      </button>
+    <div></div>
+   </div>
 
-        {/* Close Icon */}
-        <div className="absolute top-[52px] left-[82px] font-Jersey-15 font-normal text-[#a6a6a6] text-[80px] tracking-[0] leading-[normal] whitespace-nowrap">
-          X
-        </div>
+    <QuestionText question={questionData.word} />
+    <QuestionAnswers
+      answers={questionData.choices}
+      selectedAnswer={selectedAnswer}
+      handleWordClick={handleWordClick}
+      showFeedback={showFeedback}
+      isCorrect={isCorrect}
+    />
 
-        {/* Answer Options */}
-        <div className="flex flex-col w-[827px] h-[280px] items-center justify-center gap-5 absolute top-[493px] left-[306px]">
-          {/* Option 1 */}
-          <div className="w-[730.73px] relative h-20">
-            <div className="relative w-[729px] h-20">
-              <div className="absolute w-[720px] h-20 top-0 left-1 bg-white rounded-xl border-2 border-solid border-neutral-200 shadow-[0px_2px_0px_#e5e5e5]" />
-              <p className="w-[729px] h-12 top-[21px] left-0 absolute font-Jersey-15 font-normal text-[#4b4b4b] text-[40px] text-center tracking-[0] leading-[26.6px]">
-                Bro that fit is giving Ohio energy ngl, looking kinda skibidi toilet if you ask me
-              </p>
-            </div>
-          </div>
-
-          {/* Option 2 */}
-          <div className="w-[730.73px] relative h-20">
-            <div className="relative w-[729px] h-20">
-              <div className="absolute w-[720px] h-20 top-0 left-1 bg-white rounded-xl border-2 border-solid border-neutral-200 shadow-[0px_2px_0px_#e5e5e5]" />
-              <p className="w-[729px] h-[43px] top-[19px] left-0 absolute font-Jersey-15 font-normal text-[#4b4b4b] text-[40px] text-center tracking-[0] leading-[26.6px]">
-                Yo my rizz was unmatched, I was giving sigma energy the whole time
-              </p>
-            </div>
-          </div>
-
-          {/* Option 3 */}
-          <div className="w-[722px] relative h-20">
-            <div className="relative w-[720px] h-20 bg-white rounded-xl border-2 border-solid border-neutral-200 shadow-[0px_2px_0px_#e5e5e5]">
-              <p className="w-[688px] h-[43px] top-[17px] left-2.5 absolute font-Jersey-15 font-normal text-[#4b4b4b] text-[40px] text-center tracking-[0] leading-[26.6px]">
-                Just been mewing all day to get that sigma jawline, gotta lock in and looksmax fr fr
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Prompt Section (Top Bubble) */}
-        <div className="absolute w-[942px] h-[296px] top-[161px] left-[249px]">
-          <div className="inline-flex top-0 left-0 flex-col items-end absolute">
-            <div className="relative w-[686px] h-[169px]">
-              <div className="inline-flex items-center gap-2.5 px-[26px] py-3.5 absolute top-[57px] left-[122px] bg-white rounded-[15px] border-2 border-solid border-neutral-200">
-                <p className="relative w-fit mt-[-2.00px] font-Jersey-15 font-normal text-[#e0734f] text-6xl tracking-[0] leading-[39px] whitespace-nowrap">
-                  What did you do today?
-                </p>
-              </div>
-              <img className="absolute w-[114px] h-[114px] top-7 left-0 object-cover" alt="Image" src={crying} />
-            </div>
-          </div>
-        </div>
-
-        {/* Mirror Section (Bottom Bubble) */}
-        <div className="flex w-[686px] top-[127px] left-64 rotate-180 flex-col items-end absolute">
-          <div className="relative w-[686px] h-[169px]">
-            <div className="inline-flex h-[117px] items-center gap-2.5 px-[26px] py-3.5 absolute top-[61px] left-[122px] bg-white rounded-[15px] border-2 border-solid border-neutral-200">
-              <div className="relative w-[718px] h-[90px] mt-[-0.50px] mb-[-0.50px] border-b-2 [border-bottom-style:solid] border-[#afafaf] rotate-180" />
-            </div>
-            <div className="absolute w-[114px] h-[169px] top-0 left-0" />
-          </div>
-        </div>
-
-      </div>
-    </div>
+    </QuestionContent>
+    <div className="relative w-full" style={{ height: "125px" }}>
+      <QuestionCheck
+        showFeedback={showFeedback}
+        handleCheck={handleCheck}
+        selectedAnswer={selectedAnswer}
+      />
+      {showFeedback && (
+        <FeedbackBanner
+          isCorrect={isCorrect}
+          handleContinue={handleContinue}
+          correctAnswer={correctAnswer}
+        />
+      )}
+     </div>
+    </QuestionBackground>
   );
-};
+}
 
-export default SentenceSelect;
+export default MultipleChoice;

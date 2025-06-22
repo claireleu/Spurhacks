@@ -27,6 +27,15 @@ const QuestionQuestion = ({ image, question }) => {
     )
 }
 
+const QuestionText = ({ question }) => (
+    <div className="flex items-center justify-center my-8">
+        <span className="font-Jersey-15 font-normal text-[#3c3c3c] text-4xl sm:text-5xl md:text-6xl tracking-wide text-center">
+            {question}
+        </span>
+    </div>
+);
+
+
 const QuestionAnswers = ({ answers, selectedAnswer, handleWordClick, showFeedback, isCorrect }) => {
 
     const Word = ({ className, divClassName, state, text, onClick, disabled }) => {
@@ -187,4 +196,4 @@ const QuestionLongOptions = ({ answers, selectedAnswer, handleWordClick, showFee
     )
 }
 
-export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions };
+export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionText, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions };
