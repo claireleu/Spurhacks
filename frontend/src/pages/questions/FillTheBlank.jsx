@@ -10,7 +10,6 @@ function FillTheBlank({ onContinue }) {
     const { hearts, setHearts } = useHearts()
     const { addPoints } = usePoints()
 
-
     useEffect(() => {
         fetch("http://127.0.0.1:5000/generate-fill-in-blank")
             .then((res) => res.json())
@@ -30,14 +29,15 @@ function FillTheBlank({ onContinue }) {
     const handleCheck = () => {
         const correctAnswer = questionData?.answer;
         const isCorrect = selectedAnswer === correctAnswer;
-        if (!isCorrect && setHearts) {
+        if (!isCorrect) {
             setHearts(prev => prev - 1);
             if (hearts === 1) {
                 setTimeout(() => window.location.href = "/gameover", 100);
                 return;
             }
+        } else {
+            addPoints()
         }
-        addPoints()
         setShowFeedback(true);
     };
 
@@ -86,7 +86,10 @@ function FillTheBlank({ onContinue }) {
                     showFeedback={showFeedback}
                     isCorrect={isCorrect}
                 />
+
             </QuestionContent>
+
+
             <div className="relative w-full" style={{ height: "125px" }}>
                 <QuestionCheck
                     showFeedback={showFeedback}
@@ -94,18 +97,11 @@ function FillTheBlank({ onContinue }) {
                     selectedAnswer={selectedAnswer}
                 />
                 {showFeedback && (
-                    <>
-                        <FeedbackBanner
-                            isCorrect={isCorrect}
-                            handleContinue={handleContinue}
-                            correctAnswer={correctAnswer}
-                        />
-                        <FeedbackBanner
-                            isCorrect={isCorrect}
-                            handleContinue={handleContinue}
-                            correctAnswer={correctAnswer}
-                        />
-                    </>
+                    <FeedbackBanner
+                        isCorrect={isCorrect}
+                        handleContinue={handleContinue}
+                        correctAnswer={correctAnswer}
+                    />
                 )}
             </div>
         </QuestionBackground>

@@ -33,13 +33,13 @@ function GameOver() {
       <div className="flex flex-col justify-center items-center relative w-[90vw] max-w-[700px] h-fit rounded-3xl border-4 border-white bg-radial from-muddy-waters-500 to-cape-palliser-600 p-8 gap-5 shadow-lg">
         <h1 className="text-white text-center w-full font-Jersey-15 text-7xl">Lesson Over</h1>
         <h2 className="text-white text-center w-full font-Jersey-15 text-3xl">Questions Answered: {points}</h2>
-        <div className='flex flex-row h-1/3 w-1/2 gap-3'>
+        <div className='flex flex-row items-center justify-center h-1/3 w-1/2 gap-3'>
           <Heart />
           <Heart className="scale-120" />
           <Heart />
         </div>
       </div>
-      <div className="flex flex-row mt-8 mb-8 gap-2">
+      <div className="flex flex-row my-8 gap-2">
         <GameOverButton label={"Try Again"} to={`/${mode}`} />
         <GameOverButton label={"Quit"} to="/" />
       </div>
