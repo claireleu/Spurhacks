@@ -22,6 +22,4 @@ const Heart = ({ className, filled = false, pulse = false }) => {
     )
 }
 
-
-
 export { BackgroundContainer, Heart }
