@@ -12,9 +12,6 @@ const GameOverButton = ({ label, icon, to }) => {
             navigate(to);
           }, 200);
         }
-        if (label === 'Restart') {
-          window.location.reload();
-        }
       }}
       className={`flex items-center justify-center rounded-full border-4 border-white text-white px-6 py-2 text-5xl tracking-wider font-Jersey-15 
         bg-gradient-to-b from-cape-palliser-400 to-tumbleweed-500 shadow-md mr-4 cursor-pointer 
@@ -39,7 +36,7 @@ function GameOver() {
         </div>
       </div>
       <div className="flex flex-row mt-8 mb-8 gap-2">
-        <GameOverButton label={"Try Again"} to=""/>
+        <GameOverButton label={"Try Again"} to="/" />
         <GameOverButton label={"Quit"} to="/" />
       </div>
     </BackgroundContainer>

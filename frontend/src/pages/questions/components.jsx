@@ -100,13 +100,13 @@ const QuestionCheck = ({ showFeedback, handleCheck, selectedAnswer }) => {
 const DisplayPoints = () => {
     const { points } = usePoints()
     return (
-        <div className="absolute top-15 right-5 font-Jersey-15 text-2xl text-white bg-black bg-opacity-30 px-4 py-2 rounded-lg">
+        <div className="absolute top-16 right-5 font-Jersey-15 text-2xl text-white bg-black bg-opacity-30 px-4 py-2 rounded-lg">
             Points: {points}
         </div>
     )
 }
 
-const FeedbackBanner = ({ isCorrect, handleContinue }) => (
+const FeedbackBanner = ({ isCorrect, handleContinue, correctAnswer}) => (
     <div
         className={`fixed bottom-0 left-0 w-full p-6 text-white ${isCorrect ? "bg-[#d7ffb8]" : "bg-[#ffdfe0]"
             }`}
@@ -120,11 +120,16 @@ const FeedbackBanner = ({ isCorrect, handleContinue }) => (
                     {isCorrect ? "✓" : "✗"}
                 </div>
             </div>
+         
+            <div className="flex-1 text-center font-semibold text-lg text-gray-800">
+                The correct answer was <span className="font-bold">{correctAnswer}</span>
+            </div>
+
             <button
                 onClick={handleContinue}
                 className={`px-8 py-3 rounded-lg text-xl font-bold ${isCorrect
-                    ? "bg-green-500 text-white"
-                    : "bg-red-500 text-white"
+                    ? "bg-green-500 text-green-600"
+                    : "bg-red-500 text-red-600"
                     }`}
             >
                 CONTINUE
@@ -182,4 +187,50 @@ const QuestionLongOptions = ({ answers, selectedAnswer, handleWordClick, showFee
     )
 }
 
-export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions };
+const QuestionImages = ({ answers, selectedAnswer, handleWordClick, showFeedback, isCorrect, imageDataset }) => {
+    return (
+        <div className="flex justify-between items-center space-x-4">
+            {answers.map((answer) => {
+                // Find the image URL that matches the answer
+                const imageUrl = imageDataset.find((img) => img.name === answer)?.link;
+
+                // Determine the state classes for styling
+                let stateClasses = "";
+                if (showFeedback) {
+                    if (isCorrect && answer === selectedAnswer) {
+                        stateClasses = "border-green-500";
+                    } else if (!isCorrect && answer === selectedAnswer) {
+                        stateClasses = "border-red-500";
+                    } else {
+                        stateClasses = "border-gray-300";
+                    }
+                } else if (answer === selectedAnswer) {
+                    stateClasses = "border-gray-500";
+                }
+
+                return (
+                    <div
+                        key={answer}
+                        className={`relative w-1/3 aspect-[2/3] border-4 rounded-lg overflow-hidden transition-all duration-200 ${stateClasses}`}
+                        onClick={() => !showFeedback && handleWordClick(answer)}
+                        style={{ cursor: showFeedback ? "not-allowed" : "pointer" }}
+                    >
+                        {imageUrl ? (
+                            <img
+                                src={imageUrl}
+                                alt={answer}
+                                className="w-full h-full object-cover object-center p-2"
+                            />
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500">
+                                No Image
+                            </div>
+                        )}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
+export { QuestionBackground, QuestionContent, QuestionQuestion, QuestionAnswers, QuestionCheck, FeedbackBanner, DisplayPoints, QuestionLongOptions, QuestionImages };

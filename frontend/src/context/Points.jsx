@@ -5,7 +5,7 @@ export const usePoints = () => useContext(PointsContext);
 
 const PointsProvider = ({ children }) => {
     const [highscore, setHighScore] = useState(0)
-    const [points, setPoints] = useState(0) 
+    const [points, setPoints] = useState(0)
 
     const addPoints = useCallback((amount) => {
         setPoints(prev => prev + amount);
@@ -15,18 +15,21 @@ const PointsProvider = ({ children }) => {
         setPoints(prev => Math.max(0, prev - amount));
     }, []);
 
-    const getPoints = useCallback(() => points, [points]);
-    const getHighScore = useCallback(() => highscore, [highscore]);
+    const resetPoints = useCallback(() => {
+        setPoints(0);
+    }, []);
+
+    const updateHighScore = useCallback((newScore) => {
+        setHighScore(prev => Math.max(prev, newScore));
+    }, []);
 
     const value = {
-        highscore,
-        setHighScore,
         points,
-        setPoints,
+        highscore,
         addPoints,
         subtractPoints,
-        getPoints,
-        getHighScore
+        resetPoints,
+        updateHighScore
     };
 
     return (
@@ -34,6 +37,6 @@ const PointsProvider = ({ children }) => {
             {children}
         </PointsContext.Provider>
     );
-}; 
+};
 
 export default PointsProvider

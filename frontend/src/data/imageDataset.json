@@ -1,86 +1,107 @@
 [
   {
-    "image": "../../public/questionimages/anita_max_wynn.png",
+    "id": 1,
+    "image": "/questionimages/anita_max_wynn.png",
     "label": "Anita Max Wynn"
   },
   {
-    "image": "../../public/questionimages/bakudeku.png",
+    "id": 2,
+    "image": "/questionimages/bakudeku.png",
     "label": "Bakudeku"
   },
   {
-    "image": "../../public/questionimages/blue_shirt_guy.png",
+    "id": 3,
+    "image": "/questionimages/blue_shirt_guy.png",
     "label": "Blue Shirt Guy"
   },
   {
-    "image": "../../public/questionimages/bombardiro_crocodilo.jpg",
+    "id": 4,
+    "image": "/questionimages/bombardiro_crocodilo.jpg",
     "label": "Bombardiro Crocodilo"
   },
   {
-    "image": "../../public/questionimages/br_br_patapim.png",
+    "id": 5,
+    "image": "/questionimages/br_br_patapim.png",
     "label": "Br Br Patapim"
   },
   {
-    "image": "../../public/questionimages/chopped_chin.png",
+    "id": 6,
+    "image": "/questionimages/chopped_chin.png",
     "label": "Chopped Chin"
   },
   {
-    "image": "../../public/questionimages/grow_a_garden.png",
+    "id": 7,
+    "image": "/questionimages/grow_a_garden.png",
     "label": "Grow a Garden"
   },
   {
-    "image": "../../public/questionimages/grimace_shake.png",
+    "id": 8,
+    "image": "/questionimages/grimace_shake.png",
     "label": "Grimace Shake"
   },
   {
-    "image": "../../public/questionimages/its_not_clocking.png",
+    "id": 9,
+    "image": "/questionimages/its_not_clocking.png",
     "label": "It's Not Clocking to You"
   },
   {
-    "image": "../../public/questionimages/john_pork.png",
+    "id": 10,
+    "image": "/questionimages/john_pork.png",
     "label": "John Pork"
   },
   {
-    "image": "../../public/questionimages/kai_cenat.png",
+    "id": 11,
+    "image": "/questionimages/kai_cenat.png",
     "label": "Kai Cenat"
   },
   {
-    "image": "../../public/questionimages/lirili_larila.png",
+    "id": 12,
+    "image": "/questionimages/lirili_larila.png",
     "label": "Lirili Larila"
   },
   {
-    "image": "../../public/questionimages/lmao.jpg",
+    "id": 13,
+    "image": "/questionimages/lmao.jpg",
     "label": "LMAO"
   },
   {
-    "image": "../../public/questionimages/oiiaioiiiiai.png",
+    "id": 14,
+    "image": "/questionimages/oiiaioiiiiai.png",
     "label": "Oiiaioiiiiai"
   },
   {
-    "image": "../../public/questionimages/shimpanzini_bananini.png",
+    "id": 15,
+    "image": "/questionimages/shimpanzini_bananini.png",
     "label": "Shimpanzini Bananini"
   },
   {
-    "image": "../../public/questionimages/skibidi_toilet.png",
+    "id": 16,
+    "image": "/questionimages/skibidi_toilet.png",
     "label": "Skibidi Toilet"
   },
   {
-    "image": "../../public/questionimages/tim_cheese.png",
+    "id": 17,
+    "image": "/questionimages/tim_cheese.png",
     "label": "Tim Cheese"
   },
   {
-    "image": "../../public/questionimages/tralalero_tralala.png",
+    "id": 18,
+    "image": "/questionimages/tralalero_tralala.png",
     "label": "Tralalero Tralala"
   },
   {
-    "image": "../../public/questionimages/trippi_troppi.png",
+    "id": 19,
+    "image": "/questionimages/trippi_troppi.png",
     "label": "Trippi Troppi"
   },
   {
-    "image": "../../public/questionimages/tung_tung_tung_sahur.png",
+    "id": 20,
+    "image": "/questionimages/tung_tung_tung_sahur.png",
     "label": "Tung Tung Tung Sahur"
   },
   {
-    "image": "../../public/questionimages/yeet.png",
+    "id": 21,
+    "image": "/questionimages/yeet.png",
     "label": "Yeeting"
   }
 ]

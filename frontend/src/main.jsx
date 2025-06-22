@@ -12,7 +12,7 @@ import {
 import './root.css'
 
 // 4. API-backed question widgets
-import Fitbq  from './Fillintheblank.jsx'
+import Fitbq from './Fillintheblank.jsx'
 import Defmcq from './Defmcq.jsx'
 import Imageq from './Imageqs'
 
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <PointsProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </PointsProvider>
   </StrictMode>
 )
