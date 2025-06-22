@@ -29,7 +29,7 @@ function App() {
         </a>
       </div>
 
-      <h1>Brainrot Generator</h1>
+      <h1>Fill in the Blank Generator</h1>
 
       {brainrotData && (
         <div className="card">

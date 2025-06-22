@@ -1,3 +1,9 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import Fitbq from './Fillintheblank.jsx' 
+import Defmcq from './Defmcq.jsx'
+import Imageq from './Imageqs'
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
@@ -37,6 +43,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Imageq/>
+  </StrictMode>,
+)
+
     <RouterProvider router={router} />
   </StrictMode>
 );
