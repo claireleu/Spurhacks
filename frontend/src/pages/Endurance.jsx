@@ -5,17 +5,19 @@ import ImageSelect from "./questions/ImageSelect"
 import MultipleChoice from "./questions/MultipleChoice"
 import { DisplayPoints } from "./questions/components";
 import getRandomQuestionType from "./Randomiser";
-import { useMode, useHearts } from "../context/useContext";
+import { useMode, useHearts, usePoints } from "../context/useContext";
 
 function Endurance() {
   const { hearts, setHearts } = useHearts();
+  const { resetPoints } = usePoints();
   const [questionKey, setQuestionKey] = useState(0);
   const [questionType, setQuestionType] = useState(() => getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
   const { setMode } = useMode()
 
   useEffect(() => {
-    setMode("endurance")
-    setHearts(3)
+    setMode("endurance");
+    setHearts(3);
+    resetPoints();
   }, [])
 
   useEffect(() => {
