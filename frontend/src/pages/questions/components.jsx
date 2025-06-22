@@ -1,3 +1,5 @@
+import { usePoints } from "../../context/Points";
+
 const QuestionBackground = ({ children }) => {
     return (
         <div className="bg-grey min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
@@ -93,6 +95,15 @@ const QuestionCheck = ({ showFeedback, handleCheck, selectedAnswer }) => {
             )}
         </>
     );
+}
+
+const DisplayPoints = () => {
+    const { points } = usePoints()
+    return (
+        <div className="absolute top-15 right-5 font-Jersey-15 text-2xl text-white bg-black bg-opacity-30 px-4 py-2 rounded-lg">
+            Points: {points}
+        </div>
+    )
 }
 
 const FeedbackBanner = ({ isCorrect, handleContinue }) => (
