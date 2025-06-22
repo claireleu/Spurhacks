@@ -3,9 +3,9 @@ import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionCheck, F
 
 function ImageSelect() {
     const options = [
-        { id: 1, src: "/path/to/image1.png", alt: "Option 1" },
-        { id: 2, src: "/path/to/image2.png", alt: "Option 2" },
-        { id: 3, src: "/path/to/image3.png", alt: "Option 3" },
+        { id: 1, src: "../../../public/questionimages/anita_max_wynn.png", alt: "Option 1" },
+        { id: 2, src: "../../../public/questionimages/john_pork.png", alt: "Option 2" },
+        { id: 3, src: "../../../public/questionimages/kai_cenat.png", alt: "Option 3" },
     ];
     const correctAnswerId = 2; // Example: The correct answer is the second image
     const [selectedOption, setSelectedOption] = useState(null);
