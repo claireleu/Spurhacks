@@ -6,4 +6,7 @@ PointsContext.displayName = "PointsContext"
 const HeartsContext = createContext();
 HeartsContext.displayName = "HeartsContext"
 
-export { PointsContext, HeartsContext }
+const ModeContext = createContext();
+ModeContext.displayName = "HeartsContext"
+
+export { PointsContext, HeartsContext, ModeContext }

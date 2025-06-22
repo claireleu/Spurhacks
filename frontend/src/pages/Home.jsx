@@ -1,10 +1,17 @@
 import logo from "../assets/duoslango-logo.png";
-import bird from "../assets/duoslango.png";
+import bird from "../assets/birdheader.png";
 import { useNavigate } from "react-router-dom";
 import { BackgroundContainer } from "./components";
-import { usePoints } from "../context/useContext";
+import { useMode, usePoints } from "../context/useContext";
+import { useEffect } from "react";
 
 const HomeButton = ({ label, icon, to }) => {
+  const { setMode } = useMode()
+
+  useEffect(() => {
+    setMode("")
+  }, [])
+
   const navigate = useNavigate();
   return (
     <button
@@ -33,27 +40,22 @@ function Home() {
       <div className="absolute top-5 right-5 font-Jersey-15 text-3xl text-white bg-black bg-opacity-30 px-4 py-2 rounded-lg">
         Highscore: {points}
       </div>
-      <div className="relative h-full w-fit rounded-3xl border-4 border-white bg-gradient-to-b from-porsche-500 to-burnt-sienna-400 flex items-center p-8 shadow-lg">
+      <div className="relative flex-col h-fit w-fit rounded-3xl border-4 border-white bg-gradient-to-b from-porsche-500 to-burnt-sienna-400 flex items-center shadow-lg">
         <img
           src={logo}
           alt="Duoslango logo"
-          className="h-[110px] object-contain z-10"
+          className="min-h-30 md:min-h-40 lg:min-h-60 w-auto object-contain pt-10 px-8 z-10"
         />
         <img
           src={bird}
           alt="Duoslango"
-          className="absolute bottom-0 right-8 h-[140px] object-contain z-20"
+          className="max-h-30 w-auto object-contain z-20 flex-1/5"
           style={{ pointerEvents: "none" }}
         />
       </div>
       <div className="flex flex-row mt-8 mb-8 gap-2">
-        <HomeButton label={"Endurance"} to="/endurance" />
-        <HomeButton label={"Rush"} to="/rush"/>
-      </div>
-      <div className="py-3 px-5 rounded-2xl w-fit flex justify-center bg-amber-50">
-        <p className="italic text-burning-sand-500 text-3xl font-mono text-center">
-          "eh put a saying here"
-        </p>
+        <HomeButton label={"REGULAR"} to="/endurance" />
+        <HomeButton label={"RUSH"} to="/rush" />
       </div>
     </BackgroundContainer>
   );

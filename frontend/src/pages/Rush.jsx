@@ -4,13 +4,17 @@ import MultipleChoice from "./questions/MultipleChoice";
 import ImageSelect from "./questions/ImageSelect";
 import getRandomQuestionType from "./Randomiser";
 import { DisplayPoints } from "./questions/components";
+import { useMode } from "../context/useContext";
 
 function Rush() {
-  const [timeLeft, setTimeLeft] = useState(60);
-  const [questionKey, setQuestionKey] = useState(0);
-  const [questionType, setQuestionType] = useState(() =>
-    getRandomQuestionType(["fill-in-the-blank", "multiple-choice", "image"])
-  );
+    const [timeLeft, setTimeLeft] = useState(10);
+    const [questionKey, setQuestionKey] = useState(0);
+    const [questionType, setQuestionType] = useState(() => getRandomQuestionType(["image", "fill-in-the-blank", "multiple-choice"]));
+    const { setMode } = useMode()
+
+    useEffect(() => {
+      setMode("rush")
+    }, [])
 
   useEffect(() => {
     if (timeLeft > 0) {
