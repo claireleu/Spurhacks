@@ -8,7 +8,7 @@ import './root.css';
 import Home from './pages/Home';
 import FillTheBlank from './pages/questions/FillTheBlank';
 import Rush from './pages/Rush'
-import SentenceSelect from './SentenceSelect.jsx';
+import SentenceSelect from './pages/questions/SentenceSelect.jsx';
 import GameOver from './pages/GameOver'
 
 const router = createBrowserRouter([
