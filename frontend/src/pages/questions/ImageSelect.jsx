@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { QuestionBackground, QuestionContent, QuestionQuestion, QuestionText, QuestionCheck, FeedbackBanner, DisplayPoints } from "./components"
 
-function ImageSelect({ hearts, setHearts }) {
+function ImageSelect({ hearts, setHearts, onContinue}) {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [questionData, setQuestionData] = useState(null);
@@ -33,7 +33,7 @@ function ImageSelect({ hearts, setHearts }) {
     }
     setShowFeedback(true);
   };
-
+/*
   const handleContinue = () => {
     setSelectedIndex(null);
     setShowFeedback(false);
@@ -44,6 +44,12 @@ function ImageSelect({ hearts, setHearts }) {
         setQuestionData(data);
       })
       .catch((err) => console.error("Error fetching next image question:", err));
+  };*/
+
+  const handleContinue = () => {
+    setSelectedIndex(null);
+    setShowFeedback(false);
+    onContinue(); 
   };
 
   if (!questionData) return <p>Loading...</p>;
