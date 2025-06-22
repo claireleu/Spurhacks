@@ -1,4 +1,4 @@
-import { usePoints } from "../../context/Points";
+import { usePoints } from "../../context/useContext";
 
 const QuestionBackground = ({ children }) => {
     return (

@@ -8,7 +8,7 @@ function App() {
     try {
       const response = await fetch('http://127.0.0.1:5000/generate-fill-in-blank')
       const data = await response.json()
-      setBrainrotData(data) /*added .text before by app.py is already only returning .text*/
+      setBrainrotData(data)
       console.log('Got response:', data)
     } catch (err) {
       console.error('Failed to fetch brainrot', err)
@@ -17,14 +17,7 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-      </div>
-
       <h1>Fill in the Blank Generator</h1>
-
       {brainrotData && (
         <div className="card">
           <p>{brainrotData.sentence}</p>
@@ -35,16 +28,13 @@ function App() {
           </div>
         </div>
       )}
-
       <div className="card">
         <button onClick={() => {
           setCount((count) => count + 1)
           getBrainrot()}}>
           brainrot counter: {count}
         </button>
-
       </div>
-
     </>
   )
 }

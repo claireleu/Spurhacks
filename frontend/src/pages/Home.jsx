@@ -2,7 +2,7 @@ import logo from "../assets/duoslango-logo.png";
 import bird from "../assets/duoslango.png";
 import { useNavigate } from "react-router-dom";
 import { BackgroundContainer } from "./components";
-import { usePoints } from "../context/Points";
+import { usePoints } from "../context/useContext";
 
 const HomeButton = ({ label, icon, to }) => {
   const navigate = useNavigate();

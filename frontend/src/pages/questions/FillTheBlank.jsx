@@ -7,7 +7,6 @@ function FillTheBlank({ hearts, setHearts }) {
     const [showFeedback, setShowFeedback] = useState(false);
     const [questionData, setQuestionData] = useState(null);
 
-
     useEffect(() => {
     fetch("http://127.0.0.1:5000/generate-fill-in-blank")
       .then((res) => res.json())

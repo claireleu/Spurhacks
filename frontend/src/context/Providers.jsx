@@ -1,7 +1,5 @@
-import { createContext, useContext, useState, useCallback } from "react";
-
-const PointsContext = createContext();
-export const usePoints = () => useContext(PointsContext);
+import { useState, useCallback } from "react"
+import { PointsContext, HeartsContext } from "./Context";
 
 const PointsProvider = ({ children }) => {
     const [highscore, setHighScore] = useState(0)
@@ -39,4 +37,29 @@ const PointsProvider = ({ children }) => {
     );
 };
 
-export default PointsProvider
+const HeartsProvider = ({ children }) => {
+    const [hearts, setHearts] = useState(3)
+
+    const value = {
+        hearts,
+        setHearts
+    }
+
+    return (
+        <HeartsContext.Provider value={value}>
+            {children}
+        </HeartsContext.Provider>
+    )
+}
+
+const Providers = ({ children }) => {
+    return (
+        <PointsProvider>
+            <HeartsProvider>
+                {children}
+            </HeartsProvider>
+        </PointsProvider>
+    );
+};
+
+export default Providers;
