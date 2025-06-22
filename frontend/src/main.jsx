@@ -21,12 +21,11 @@ import Home            from './pages/Home'
 import Endurance       from './pages/Endurance.jsx'
 import Rush            from './pages/Rush.jsx'
 import FillTheBlank    from './pages/questions/FillTheBlank'
-import SentenceSelect  from './pages/questions/SentenceSelect.jsx'
+import ImageSelect     from './pages/questions/ImageSelect'
 import GameOver        from './pages/GameOver'
-import MultipleChoice  from './pages/questions/MultipleChoice.jsx';
+import MultipleChoice  from './pages/questions/MultipleChoice';
 
 import PointsProvider from './context/Points'
-import ImageSelect from './pages/questions/ImageSelect.jsx';
 
 
 const router = createBrowserRouter([
@@ -49,7 +48,7 @@ const router = createBrowserRouter([
     element: <FillTheBlank />
   }, {
     path: "/sentence-select",
-    element: <SentenceSelect />
+    element: <ImageSelect />
   }, {
     path: "/gameover",
     element: <GameOver />
